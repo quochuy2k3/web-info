@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     'BA Document & Báo giá dự án Clone MISA AMIS — Phân hệ Bán hàng, Công nợ, In phiếu chuyên nghiệp.',
   keywords: ['MISA AMIS', 'quản lý bán hàng', 'công nợ', 'phần mềm', 'proposal'],
   icons: {
-    icon: '/favicon.svg',
+    icon: '/icon.svg',
   },
 }
 

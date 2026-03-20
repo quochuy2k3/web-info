@@ -21,14 +21,14 @@ function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: 
 
   return (
     <Link href={`/modules/${module.id}`} className="block h-full">
-      <div className={`glow-card relative overflow-hidden h-full group cursor-pointer ${
+      <div className={`glow-card relative overflow-hidden h-full flex flex-col group cursor-pointer ${
         isCore
-          ? 'glow-card-core border-blue-500/25 shadow-[0_0_40px_rgba(245,158,11,0.08)]'
+          ? 'glow-card-core border-blue-500/20'
           : ''
       } ${isCore ? 'p-8' : 'p-6'}`}>
         {/* Large watermark number */}
-        <span className={`absolute top-3 right-4 font-bold text-blue-500/20 pointer-events-none select-none ${
-          isCore ? 'text-6xl' : 'text-4xl'
+        <span className={`absolute top-3 right-4 font-bold text-blue-500/[0.08] pointer-events-none select-none ${
+          isCore ? 'text-7xl' : 'text-5xl'
         }`}>
           {displayNumber}
         </span>
@@ -44,7 +44,7 @@ function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: 
         <div className="mb-3 relative z-10">
           <span className="text-xs font-mono text-gray-500">{module.id.toUpperCase()}</span>
           <h3 className={`font-semibold text-white mt-0.5 group-hover:text-blue-300 transition-colors ${
-            isCore ? 'text-lg' : 'text-base'
+            isCore ? 'text-xl' : 'text-base'
           }`}>
             {module.name}
           </h3>
@@ -60,14 +60,17 @@ function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: 
         </div>
 
         {/* Description */}
-        <p className={`text-sm text-gray-400 leading-relaxed mb-5 relative z-10 ${
-          isCore ? 'line-clamp-4' : 'line-clamp-2'
+        <p className={`text-sm text-gray-400 leading-relaxed relative z-10 ${
+          isCore ? 'line-clamp-none' : 'line-clamp-2'
         }`}>
           {module.description}
         </p>
 
+        {/* Spacer to push footer down */}
+        <div className="flex-1" />
+
         {/* Footer: Effort + Price + Arrow */}
-        <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between relative z-10">
+        <div className="pt-4 border-t border-white/5 flex items-center justify-between relative z-10 mt-5">
           <div className="text-xs text-gray-500">
             <span className="text-gray-400 font-medium">{module.totalEffort}</span> man-days
           </div>
