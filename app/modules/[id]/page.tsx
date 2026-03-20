@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { modules, supplementary } from '@/data/project-data'
 import { ModuleDetail } from '@/components/module-detail'
@@ -6,6 +7,24 @@ const allModules = [...modules, ...supplementary]
 
 export function generateStaticParams() {
   return allModules.map((m) => ({ id: m.id }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
+  const { id } = await params
+  const module = allModules.find((m) => m.id === id)
+
+  if (!module) {
+    return { title: 'Module không tìm thấy' }
+  }
+
+  return {
+    title: `${module.id.toUpperCase()} — ${module.name} | Proposal`,
+    description: module.description,
+  }
 }
 
 export default async function ModuleDetailPage({
