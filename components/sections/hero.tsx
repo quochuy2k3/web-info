@@ -17,7 +17,7 @@ export function Hero() {
       <div className="absolute inset-0 dot-grid" />
 
       {/* Radial fade at edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#030712_75%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#0A0A0B_75%)]" />
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
@@ -28,8 +28,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium">
-            <Sparkles size={14} className="text-indigo-400" />
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-sm font-medium">
+            <Sparkles size={14} className="text-amber-400" />
             Proposal — {projectInfo.provider.date}
           </span>
         </motion.div>
@@ -102,20 +102,20 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.5 }}
-          className="inline-flex flex-col items-center gap-2 text-gray-500 hover:text-indigo-400 transition-colors group"
+          className="inline-flex flex-col items-center gap-2 text-gray-500 hover:text-amber-400 transition-colors group"
         >
           <span className="text-xs tracking-widest uppercase">Khám phá</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <ChevronDown size={20} className="group-hover:text-indigo-400" />
+            <ChevronDown size={20} className="group-hover:text-amber-400" />
           </motion.div>
         </motion.a>
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#030712] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0A0B] to-transparent" />
     </section>
   )
 }

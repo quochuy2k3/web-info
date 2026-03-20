@@ -30,9 +30,9 @@ const cards = [
     icon: CodeXml,
     title: 'Quyền sở hữu',
     subtitle: '100% Source Code',
-    color: 'text-indigo-400',
-    bg: 'bg-indigo-500/10',
-    border: 'border-indigo-500/20',
+    color: 'text-amber-400',
+    bg: 'bg-amber-500/10',
+    border: 'border-amber-500/20',
     items: warranty.ownership,
   },
 ]

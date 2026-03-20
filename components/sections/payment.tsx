@@ -10,7 +10,7 @@ import { AnimatedCounter } from '@/components/ui/animated-counter'
 export function Payment() {
   return (
     <section id={sectionIds.payment} className="py-16 sm:py-24 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/5 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -27,10 +27,10 @@ export function Payment() {
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                     idx === 0
-                      ? 'bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 border border-indigo-500/30'
+                      ? 'bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30'
                       : 'bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30'
                   }`}>
-                    <CreditCard size={22} className={idx === 0 ? 'text-indigo-400' : 'text-emerald-400'} />
+                    <CreditCard size={22} className={idx === 0 ? 'text-amber-400' : 'text-emerald-400'} />
                   </div>
                   <div>
                     <div className="text-xs text-gray-500 uppercase tracking-wider">Đợt {term.phase}</div>
@@ -55,7 +55,7 @@ export function Payment() {
                 <div>
                   <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">Deliverables</div>
                   <div className="flex items-start gap-2 text-sm text-gray-400">
-                    <CircleCheck size={14} className={`${idx === 0 ? 'text-indigo-400' : 'text-emerald-400'} mt-0.5 shrink-0`} />
+                    <CircleCheck size={14} className={`${idx === 0 ? 'text-amber-400' : 'text-emerald-400'} mt-0.5 shrink-0`} />
                     <span>{term.deliverables}</span>
                   </div>
                 </div>

@@ -11,7 +11,7 @@ export function Pricing() {
 
   return (
     <section id={sectionIds.pricing} className="py-16 sm:py-24 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/5 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -51,8 +51,8 @@ export function Pricing() {
             {allItems.map((item) => (
               <StaggerItem key={item.id}>
                 {/* Desktop row */}
-                <div className={`hidden lg:grid grid-cols-[50px_1fr_200px_80px_80px_80px_130px] gap-3 px-5 py-3.5 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-indigo-500/[0.03]' : ''}`}>
-                  <span className="text-xs font-mono text-indigo-400">{item.id.toUpperCase()}</span>
+                <div className={`hidden lg:grid grid-cols-[50px_1fr_200px_80px_80px_80px_130px] gap-3 px-5 py-3.5 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-amber-500/[0.03]' : ''}`}>
+                  <span className="text-xs font-mono text-amber-400">{item.id.toUpperCase()}</span>
                   <span className="text-sm font-medium text-white flex items-center gap-2">
                     {item.name}
                     {item.isCore && <span className="text-[10px] px-1.5 py-0.5 rounded badge-core">CORE</span>}
@@ -61,21 +61,21 @@ export function Pricing() {
                   <span className="text-sm text-gray-400 text-right">{item.effortFE}</span>
                   <span className="text-sm text-gray-400 text-right">{item.effortBE}</span>
                   <span className="text-sm text-white font-medium text-right">{item.totalEffort}</span>
-                  <span className="text-sm font-semibold text-indigo-400 text-right">{formatCurrency(item.price)}</span>
+                  <span className="text-sm font-semibold text-amber-400 text-right">{formatCurrency(item.price)}</span>
                 </div>
 
                 {/* Mobile card */}
-                <div className={`lg:hidden px-4 py-3 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-indigo-500/[0.03]' : ''}`}>
+                <div className={`lg:hidden px-4 py-3 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-amber-500/[0.03]' : ''}`}>
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono text-indigo-400">{item.id.toUpperCase()}</span>
+                      <span className="text-[10px] font-mono text-amber-400">{item.id.toUpperCase()}</span>
                       {item.isCore && <span className="text-[10px] px-1.5 py-0.5 rounded badge-core">CORE</span>}
                     </div>
                     <span className="text-xs text-gray-600">{item.totalEffort}d</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-white">{item.name}</span>
-                    <span className="text-sm font-semibold text-indigo-400 shrink-0 ml-3">{formatCurrency(item.price)}</span>
+                    <span className="text-sm font-semibold text-amber-400 shrink-0 ml-3">{formatCurrency(item.price)}</span>
                   </div>
                 </div>
               </StaggerItem>

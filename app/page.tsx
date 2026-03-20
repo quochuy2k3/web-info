@@ -14,7 +14,7 @@ import { Footer } from '@/components/sections/footer'
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="main-content">
       <Navigation />
       <Hero />
       <div className="section-divider" />

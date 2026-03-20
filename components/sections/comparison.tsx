@@ -25,7 +25,7 @@ export function Comparison() {
               <div className="text-xs text-gray-600">SaaS</div>
             </div>
             <div className="text-center">
-              <div className="text-sm font-semibold text-indigo-400 flex items-center justify-center gap-1">
+              <div className="text-sm font-semibold text-amber-400 flex items-center justify-center gap-1">
                 <TrendingUp size={14} />
                 Phần mềm Custom
               </div>

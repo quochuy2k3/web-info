@@ -9,23 +9,23 @@ const layers = [
   {
     label: 'Client',
     items: [
-      { name: 'Next.js Frontend', sub: 'SSR/SSG • Tailwind CSS', color: 'from-indigo-500 to-indigo-600' },
+      { name: 'Next.js Frontend', sub: 'SSR/SSG • Tailwind CSS', color: 'from-amber-500 to-amber-600' },
     ],
   },
   {
     label: 'API Gateway',
     items: [
-      { name: 'Cloud Run', sub: 'Next.js API Routes', color: 'from-cyan-500 to-cyan-600' },
+      { name: 'Cloud Run', sub: 'Next.js API Routes', color: 'from-cyan-500 to-orange-600' },
       { name: 'Cloud Functions', sub: 'Serverless Workers', color: 'from-cyan-500 to-teal-600' },
     ],
   },
   {
     label: 'Services',
     items: [
-      { name: 'Auth Service', sub: 'Firebase Auth / JWT', color: 'from-violet-500 to-violet-600' },
-      { name: 'Sales Service', sub: 'CT bán hàng, Trả hàng', color: 'from-violet-500 to-purple-600' },
-      { name: 'Debt Service', sub: 'Công nợ, Bù trừ', color: 'from-violet-500 to-fuchsia-600' },
-      { name: 'Print Service', sub: 'Puppeteer + React-PDF', color: 'from-violet-500 to-pink-600' },
+      { name: 'Auth Service', sub: 'Firebase Auth / JWT', color: 'from-amber-500 to-amber-600' },
+      { name: 'Sales Service', sub: 'CT bán hàng, Trả hàng', color: 'from-amber-500 to-orange-600' },
+      { name: 'Debt Service', sub: 'Công nợ, Bù trừ', color: 'from-amber-500 to-yellow-600' },
+      { name: 'Print Service', sub: 'Puppeteer + React-PDF', color: 'from-amber-500 to-orange-600' },
     ],
   },
   {
@@ -45,7 +45,7 @@ const collections = [
 export function Architecture() {
   return (
     <section id={sectionIds.architecture} className="py-16 sm:py-24 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/5 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader

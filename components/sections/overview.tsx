@@ -35,9 +35,9 @@ const highlights = [
     icon: Target,
     title: 'Đơn giản hóa',
     description: 'Bỏ kế toán sổ cái, BCTC, thuế phức tạp',
-    color: 'text-violet-400',
-    bg: 'bg-violet-500/10',
-    border: 'border-violet-500/20',
+    color: 'text-amber-400',
+    bg: 'bg-amber-500/10',
+    border: 'border-amber-500/20',
   },
 ]
 

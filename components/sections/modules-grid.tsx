@@ -1,21 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import {
-  Users, Package, FileText, ShoppingCart, RotateCcw, Wallet,
-  ArrowLeftRight, Tag, Printer, Shield, Upload, TestTube, ArrowRight,
-} from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { modules, supplementary } from '@/data/project-data'
 import { sectionIds, formatCurrency } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
 import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal'
 import { AnimatedCounter } from '@/components/ui/animated-counter'
 import type { Module } from '@/data/project-data'
-
-const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Users, Package, FileText, ShoppingCart, RotateCcw, Wallet,
-  ArrowLeftRight, Tag, Printer, Shield, Upload, TestTube,
-}
 
 const priorityBadge: Record<string, string> = {
   'Rất cao': 'badge-core',
@@ -24,59 +16,66 @@ const priorityBadge: Record<string, string> = {
   'Thấp': 'badge-low',
 }
 
-function ModuleCard({ module }: { module: Module }) {
-  const Icon = iconMap[module.icon]
+function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: string }) {
   const isCore = module.isCore
 
   return (
     <Link href={`/modules/${module.id}`} className="block h-full">
-      <div className={`glow-card p-6 h-full group cursor-pointer ${isCore ? 'glow-card-core' : ''}`}>
+      <div className={`glow-card relative overflow-hidden h-full group cursor-pointer ${
+        isCore
+          ? 'glow-card-core border-amber-500/25 shadow-[0_0_40px_rgba(245,158,11,0.08)]'
+          : ''
+      } ${isCore ? 'p-8' : 'p-6'}`}>
+        {/* Large watermark number */}
+        <span className={`absolute top-3 right-4 font-bold text-amber-500/20 pointer-events-none select-none ${
+          isCore ? 'text-6xl' : 'text-4xl'
+        }`}>
+          {displayNumber}
+        </span>
+
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
-            isCore
-              ? 'bg-gradient-to-br from-indigo-500/20 to-violet-500/20 border border-indigo-500/30'
-              : 'bg-white/5 border border-white/10'
-          }`}>
-            {Icon && <Icon size={20} className={isCore ? 'text-indigo-400' : 'text-gray-400'} />}
-          </div>
+        <div className="flex items-start justify-between mb-4 relative z-10">
           <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${priorityBadge[module.priority]}`}>
             {module.priority}
           </span>
         </div>
 
         {/* Module ID + Name */}
-        <div className="mb-3">
+        <div className="mb-3 relative z-10">
           <span className="text-xs font-mono text-gray-500">{module.id.toUpperCase()}</span>
-          <h3 className="text-base font-semibold text-white mt-0.5 group-hover:text-indigo-300 transition-colors">
+          <h3 className={`font-semibold text-white mt-0.5 group-hover:text-amber-300 transition-colors ${
+            isCore ? 'text-lg' : 'text-base'
+          }`}>
             {module.name}
           </h3>
         </div>
 
         {/* Type badge */}
-        <div className="mb-4">
+        <div className="mb-4 relative z-10">
           <span className={`text-[10px] font-medium px-2 py-0.5 rounded ${
-            isCore ? 'bg-indigo-500/15 text-indigo-300' : 'bg-white/5 text-gray-500'
+            isCore ? 'bg-amber-500/15 text-amber-300' : 'bg-white/5 text-gray-500'
           }`}>
             {module.type}
           </span>
         </div>
 
         {/* Description */}
-        <p className="text-sm text-gray-400 leading-relaxed mb-5 line-clamp-2">
+        <p className={`text-sm text-gray-400 leading-relaxed mb-5 relative z-10 ${
+          isCore ? 'line-clamp-4' : 'line-clamp-2'
+        }`}>
           {module.description}
         </p>
 
         {/* Footer: Effort + Price + Arrow */}
-        <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
+        <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between relative z-10">
           <div className="text-xs text-gray-500">
             <span className="text-gray-400 font-medium">{module.totalEffort}</span> man-days
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-indigo-400">
+            <span className={`font-semibold ${isCore ? 'text-base text-amber-400' : 'text-sm text-amber-400'}`}>
               {formatCurrency(module.price)}
             </span>
-            <ArrowRight size={14} className="text-indigo-400/0 group-hover:text-indigo-400 transition-colors" />
+            <ArrowRight size={14} className="text-amber-400/0 group-hover:text-amber-400 transition-colors" />
           </div>
         </div>
       </div>
@@ -109,49 +108,53 @@ export function ModulesGrid() {
           ))}
         </div>
 
-        {/* Main modules grid */}
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8" staggerDelay={0.08}>
-          {/* M01, M02, M03 */}
-          {modules.slice(0, 3).map((m) => (
-            <StaggerItem key={m.id}>
-              <ModuleCard module={m} />
-            </StaggerItem>
-          ))}
-          {/* M04 CORE */}
-          <StaggerItem className="sm:col-span-2 lg:col-span-1">
-            <ModuleCard module={modules[3]} />
-          </StaggerItem>
-          {/* M05 */}
+        {/* Bento grid — asymmetric layout */}
+        <StaggerContainer
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8"
+          staggerDelay={0.08}
+        >
+          {/* Row 1-2: M01, M02, M04(2x2) */}
           <StaggerItem>
-            <ModuleCard module={modules[4]} />
+            <ModuleCard module={modules[0]} displayNumber="01" />
           </StaggerItem>
-          {/* M06 CORE */}
           <StaggerItem>
-            <ModuleCard module={modules[5]} />
+            <ModuleCard module={modules[1]} displayNumber="02" />
           </StaggerItem>
-          {/* M07 */}
+          <StaggerItem className="lg:col-span-2 lg:row-span-2">
+            <ModuleCard module={modules[3]} displayNumber="04" />
+          </StaggerItem>
+
+          {/* Row 2: M03, M05 (M04 continues) */}
           <StaggerItem>
-            <ModuleCard module={modules[6]} />
+            <ModuleCard module={modules[2]} displayNumber="03" />
           </StaggerItem>
-          {/* M08 */}
-          {modules[7] && (
-            <StaggerItem>
-              <ModuleCard module={modules[7]} />
-            </StaggerItem>
-          )}
+          <StaggerItem>
+            <ModuleCard module={modules[4]} displayNumber="05" />
+          </StaggerItem>
+
+          {/* Row 3: M06(2col), M07 */}
+          <StaggerItem className="sm:col-span-2">
+            <ModuleCard module={modules[5]} displayNumber="06" />
+          </StaggerItem>
+          <StaggerItem>
+            <ModuleCard module={modules[6]} displayNumber="07" />
+          </StaggerItem>
+          <StaggerItem>
+            <ModuleCard module={modules[7]} displayNumber="08" />
+          </StaggerItem>
         </StaggerContainer>
 
         {/* Divider */}
         <div className="section-divider my-14" />
 
-        {/* Supplementary modules */}
+        {/* Supplementary modules — compact horizontal layout */}
         <div className="mb-8">
           <h3 className="text-xl font-semibold text-white mb-6 text-center">Phần bổ trợ</h3>
         </div>
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" staggerDelay={0.08}>
-          {supplementary.map((m) => (
+          {supplementary.map((m, i) => (
             <StaggerItem key={m.id}>
-              <ModuleCard module={m} />
+              <ModuleCard module={m} displayNumber={String(modules.length + i + 1).padStart(2, '0')} />
             </StaggerItem>
           ))}
         </StaggerContainer>

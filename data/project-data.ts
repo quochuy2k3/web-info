@@ -82,7 +82,7 @@ export const techStack = [
     tech: 'Next.js (React)',
     icon: 'Monitor',
     description: 'SSR/SSG, responsive web app, Tailwind CSS',
-    color: 'indigo',
+    color: 'amber',
   },
   {
     layer: 'Backend API',
@@ -103,14 +103,14 @@ export const techStack = [
     tech: 'Google Cloud Platform',
     icon: 'Cloud',
     description: 'Cloud Run + Cloud Functions + Cloud Storage',
-    color: 'amber',
+    color: 'orange',
   },
   {
     layer: 'Auth',
     tech: 'Firebase Auth / NextAuth',
     icon: 'Shield',
     description: 'Email/password, JWT, role-based access',
-    color: 'violet',
+    color: 'teal',
   },
   {
     layer: 'PDF / Print',

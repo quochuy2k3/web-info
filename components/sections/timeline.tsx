@@ -8,9 +8,9 @@ import { SectionHeader } from '@/components/ui/section-header'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 const phaseColors = [
-  { bg: 'bg-indigo-500', border: 'border-indigo-500/30', glow: 'shadow-indigo-500/30', text: 'text-indigo-400', bgLight: 'bg-indigo-500/10' },
+  { bg: 'bg-amber-500', border: 'border-amber-500/30', glow: 'shadow-amber-500/30', text: 'text-amber-400', bgLight: 'bg-amber-500/10' },
   { bg: 'bg-cyan-500', border: 'border-cyan-500/30', glow: 'shadow-cyan-500/30', text: 'text-cyan-400', bgLight: 'bg-cyan-500/10' },
-  { bg: 'bg-violet-500', border: 'border-violet-500/30', glow: 'shadow-violet-500/30', text: 'text-violet-400', bgLight: 'bg-violet-500/10' },
+  { bg: 'bg-rose-500', border: 'border-rose-500/30', glow: 'shadow-rose-500/30', text: 'text-rose-400', bgLight: 'bg-rose-500/10' },
   { bg: 'bg-emerald-500', border: 'border-emerald-500/30', glow: 'shadow-emerald-500/30', text: 'text-emerald-400', bgLight: 'bg-emerald-500/10' },
 ]
 
