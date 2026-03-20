@@ -64,9 +64,6 @@ export function Architecture() {
                 className="flex items-stretch border-b border-white/[0.04] last:border-b-0 hover:bg-white/[0.02] transition-colors"
                 style={{ background: layer.accentBg }}
               >
-                {/* Left accent bar */}
-                <div className="w-1 shrink-0" style={{ background: layer.accent }} />
-
                 {/* Content */}
                 <div className="flex-1 px-5 sm:px-8 py-5 sm:py-6">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
