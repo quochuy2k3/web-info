@@ -71,9 +71,6 @@ export function Architecture() {
         <div className="hidden lg:block">
           <ScrollReveal>
             <div className="relative max-w-6xl mx-auto">
-              {/* Connection line */}
-              <div className="absolute top-[72px] left-[10%] right-[10%] h-px bg-gradient-to-r from-blue-500/30 via-cyan-500/20 via-orange-500/20 to-emerald-500/30" />
-
               <div className="grid grid-cols-4 gap-6">
                 {layers.map((layer, idx) => (
                   <div key={layer.label} className="relative">
