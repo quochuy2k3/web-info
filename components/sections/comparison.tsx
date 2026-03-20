@@ -17,8 +17,8 @@ export function Comparison() {
         />
 
         <div className="max-w-4xl mx-auto">
-          {/* Table header */}
-          <div className="grid grid-cols-3 gap-4 px-5 py-4">
+          {/* Desktop table header */}
+          <div className="hidden md:grid grid-cols-3 gap-4 px-5 py-4">
             <div className="text-sm font-semibold text-gray-400">Tiêu chí</div>
             <div className="text-center">
               <div className="text-sm font-semibold text-gray-400">MISA AMIS</div>
@@ -37,7 +37,8 @@ export function Comparison() {
           <StaggerContainer className="divide-y divide-white/[0.03]" staggerDelay={0.06}>
             {comparison.map((row) => (
               <StaggerItem key={row.criteria}>
-                <div className="grid grid-cols-3 gap-4 px-5 py-4 table-row-hover rounded-lg transition-colors items-center">
+                {/* Desktop row */}
+                <div className="hidden md:grid grid-cols-3 gap-4 px-5 py-4 table-row-hover rounded-lg transition-colors items-center">
                   <span className="text-sm font-medium text-white">{row.criteria}</span>
                   <div className="text-center">
                     <span className="text-sm text-gray-400">{row.misa}</span>
@@ -51,6 +52,30 @@ export function Comparison() {
                     <span className={`text-sm ${row.customWin ? 'text-emerald-300 font-medium' : 'text-gray-400'}`}>
                       {row.custom}
                     </span>
+                  </div>
+                </div>
+
+                {/* Mobile card */}
+                <div className="md:hidden px-5 py-4 space-y-2">
+                  <div className="text-sm font-medium text-white">{row.criteria}</div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <div className="text-[10px] text-gray-600 uppercase tracking-wider mb-0.5">MISA</div>
+                      <div className="text-sm text-gray-400">{row.misa}</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-gray-600 uppercase tracking-wider mb-0.5">Custom</div>
+                      <div className="flex items-center gap-1.5">
+                        {row.customWin ? (
+                          <Check size={12} className="text-emerald-400 shrink-0" />
+                        ) : (
+                          <X size={12} className="text-red-400/50 shrink-0" />
+                        )}
+                        <span className={`text-sm ${row.customWin ? 'text-emerald-300 font-medium' : 'text-gray-400'}`}>
+                          {row.custom}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </StaggerItem>

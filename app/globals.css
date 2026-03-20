@@ -129,6 +129,26 @@ body {
   background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), rgba(34, 211, 238, 0.2), transparent);
 }
 
+/* ==================== REDUCED MOTION ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-gradient {
+    animation: none;
+  }
+}
+
 /* ==================== SCROLLBAR ==================== */
 
 ::-webkit-scrollbar {

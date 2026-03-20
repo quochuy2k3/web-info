@@ -23,7 +23,7 @@ export function Pricing() {
         {/* Grand total highlight */}
         <ScrollReveal>
           <div className="max-w-2xl mx-auto mb-14">
-            <div className="glow-card glow-card-core p-8 text-center animate-pulse-glow">
+            <div className="glow-card glow-card-core p-8 text-center">
               <div className="text-sm text-gray-400 mb-2">Tổng giá trị dự án</div>
               <div className="text-4xl sm:text-5xl font-bold text-gradient mb-3">
                 <AnimatedCounter target={pricingSummary.total} format="currency" duration={2.5} />

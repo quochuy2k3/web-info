@@ -135,12 +135,23 @@ export function ModuleDetail({ module }: { module: Module }) {
                 <StaggerContainer className="divide-y divide-white/[0.02]" staggerDelay={0.03}>
                   {module.dataFields.map((field) => (
                     <StaggerItem key={field.name}>
-                      <div className="grid grid-cols-1 lg:grid-cols-[140px_100px_60px_1fr_150px] gap-1 lg:gap-3 px-4 py-2.5 table-row-hover rounded transition-colors">
+                      {/* Desktop row */}
+                      <div className="hidden lg:grid grid-cols-[140px_100px_60px_1fr_150px] gap-3 px-4 py-2.5 table-row-hover rounded transition-colors">
                         <span className="text-sm font-mono text-indigo-300">{field.name}</span>
                         <span className="text-xs text-gray-500 font-mono">{field.type}</span>
                         <span>{field.required ? <span className="text-xs text-emerald-400">Yes</span> : <span className="text-xs text-gray-600">No</span>}</span>
                         <span className="text-sm text-gray-400">{field.description}</span>
                         <span className="text-xs text-gray-600 font-mono">{field.example || ''}</span>
+                      </div>
+                      {/* Mobile/tablet card */}
+                      <div className="lg:hidden px-4 py-2.5 space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-mono text-indigo-300">{field.name}</span>
+                          <span className="text-xs text-gray-500 font-mono">({field.type})</span>
+                          {field.required && <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">Required</span>}
+                        </div>
+                        <div className="text-sm text-gray-400">{field.description}</div>
+                        {field.example && <div className="text-xs text-gray-600 font-mono">VD: {field.example}</div>}
                       </div>
                     </StaggerItem>
                   ))}

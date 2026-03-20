@@ -1,6 +1,6 @@
 'use client'
 
-import { ShieldCheck, Headphones, Code2, Check } from 'lucide-react'
+import { ShieldCheck, Headphones, CodeXml, Check } from 'lucide-react'
 import { warranty } from '@/data/project-data'
 import { sectionIds, formatCurrency } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
@@ -27,7 +27,7 @@ const cards = [
     items: [warranty.paid.description, ...warranty.paid.extras],
   },
   {
-    icon: Code2,
+    icon: CodeXml,
     title: 'Quyền sở hữu',
     subtitle: '100% Source Code',
     color: 'text-indigo-400',

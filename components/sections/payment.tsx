@@ -1,6 +1,6 @@
 'use client'
 
-import { CreditCard, CheckCircle } from 'lucide-react'
+import { CreditCard, CircleCheck } from 'lucide-react'
 import { paymentTerms } from '@/data/project-data'
 import { sectionIds, formatCurrency } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
@@ -55,7 +55,7 @@ export function Payment() {
                 <div>
                   <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">Deliverables</div>
                   <div className="flex items-start gap-2 text-sm text-gray-400">
-                    <CheckCircle size={14} className={`${idx === 0 ? 'text-indigo-400' : 'text-emerald-400'} mt-0.5 shrink-0`} />
+                    <CircleCheck size={14} className={`${idx === 0 ? 'text-indigo-400' : 'text-emerald-400'} mt-0.5 shrink-0`} />
                     <span>{term.deliverables}</span>
                   </div>
                 </div>

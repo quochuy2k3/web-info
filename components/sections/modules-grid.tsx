@@ -92,7 +92,7 @@ export function ModulesGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Modules"
-          title="8 Modules phân hệ Bán hàng"
+          title={`${modules.length} Modules phân hệ Bán hàng`}
           description="Click vào từng module để xem chi tiết: màn hình, data fields, use cases, logic nghiệp vụ."
         />
 
@@ -119,8 +119,8 @@ export function ModulesGrid() {
               <ModuleCard module={m} />
             </StaggerItem>
           ))}
-          {/* M04 CORE - spans 2 cols on lg, 1 col at bottom on mobile */}
-          <StaggerItem className="sm:col-span-2 lg:col-span-1 lg:row-span-2">
+          {/* M04 CORE */}
+          <StaggerItem className="sm:col-span-2 lg:col-span-1">
             <ModuleCard module={modules[3]} />
           </StaggerItem>
           {/* M05 */}

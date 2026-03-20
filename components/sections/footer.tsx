@@ -24,6 +24,7 @@ export function Footer() {
             </p>
             <motion.a
               href="tel:0905192021"
+              aria-label="Gọi điện liên hệ"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold rounded-xl hover:from-indigo-500 hover:to-cyan-500 transition-all shadow-lg shadow-indigo-500/25"

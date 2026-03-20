@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Milestone, CheckCircle2 } from 'lucide-react'
+import { Milestone, CircleCheck } from 'lucide-react'
 import { timeline } from '@/data/project-data'
 import { sectionIds } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
@@ -37,7 +37,7 @@ export function Timeline() {
                   <div className="relative pl-16 sm:pl-20">
                     {/* Dot */}
                     <div className={`absolute left-4 sm:left-6 top-1 w-4 h-4 rounded-full ${colors.bg} timeline-dot z-10`} />
-                    <div className={`absolute left-3 sm:left-5 top-0 w-6 h-6 rounded-full ${colors.bgLight} animate-ping`} style={{ animationDuration: '3s' }} />
+                    <div className={`absolute left-3 sm:left-5 top-0 w-6 h-6 rounded-full ${colors.bgLight} animate-ping motion-reduce:animate-none`} style={{ animationDuration: '3s' }} />
 
                     {/* Phase card */}
                     <div className={`glow-card p-6 border ${colors.border}`}>
@@ -53,7 +53,7 @@ export function Timeline() {
                       <ul className="space-y-2 mb-4">
                         {phase.tasks.map((task) => (
                           <li key={task} className="flex items-start gap-2 text-sm text-gray-400">
-                            <CheckCircle2 size={14} className={`${colors.text} mt-0.5 shrink-0`} />
+                            <CircleCheck size={14} className={`${colors.text} mt-0.5 shrink-0`} />
                             <span>{task}</span>
                           </li>
                         ))}

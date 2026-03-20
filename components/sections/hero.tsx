@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ChevronDown, Sparkles } from 'lucide-react'
-import { projectInfo } from '@/data/project-data'
+import { projectInfo, modules, pricingSummary } from '@/data/project-data'
 import { sectionIds } from '@/lib/utils'
 
 const techBadges = ['Next.js', 'TypeScript', 'MongoDB', 'GCP', 'Serverless']
@@ -84,8 +84,8 @@ export function Hero() {
           className="flex flex-wrap justify-center gap-8 sm:gap-12 mb-16"
         >
           {[
-            { value: '8', label: 'Modules' },
-            { value: '122', label: 'Man-days' },
+            { value: String(modules.length), label: 'Modules' },
+            { value: String(pricingSummary.totalDays), label: 'Man-days' },
             { value: '8', label: 'Tuần' },
             { value: '2', label: 'Mẫu phiếu' },
           ].map((stat) => (

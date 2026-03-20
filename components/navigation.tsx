@@ -87,6 +87,7 @@ export function Navigation() {
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? 'Đóng menu' : 'Mở menu'}
               className="lg:hidden p-2 text-gray-400 hover:text-white"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -126,6 +127,7 @@ export function Navigation() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={scrollToTop}
+            aria-label="Về đầu trang"
             className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-indigo-600/80 backdrop-blur-sm border border-indigo-500/30 flex items-center justify-center text-white hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/20"
           >
             <ChevronUp size={18} />
