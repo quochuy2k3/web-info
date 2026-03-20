@@ -1,38 +1,42 @@
 'use client'
 
+import { Monitor, Server, Database, Cloud, Shield, Printer, ArrowDown } from 'lucide-react'
 import { sectionIds } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 const layers = [
   {
-    label: 'Client',
-    items: [
-      { name: 'Next.js Frontend', sub: 'SSR/SSG • Tailwind CSS', color: 'from-blue-500 to-blue-600' },
-    ],
+    label: 'Giao diện người dùng',
+    icon: Monitor,
+    color: 'text-blue-400',
+    borderColor: 'border-blue-500/20',
+    bgColor: 'bg-blue-500/[0.06]',
+    items: ['Next.js (React)', 'Tailwind CSS', 'Responsive Web App'],
   },
   {
-    label: 'API Gateway',
-    items: [
-      { name: 'Cloud Run', sub: 'Next.js API Routes', color: 'from-cyan-500 to-orange-600' },
-      { name: 'Cloud Functions', sub: 'Serverless Workers', color: 'from-cyan-500 to-teal-600' },
-    ],
+    label: 'Xử lý nghiệp vụ',
+    icon: Server,
+    color: 'text-cyan-400',
+    borderColor: 'border-cyan-500/20',
+    bgColor: 'bg-cyan-500/[0.06]',
+    items: ['Cloud Run (API)', 'Cloud Functions (Workers)', 'Serverless, Auto-scale'],
   },
   {
-    label: 'Services',
-    items: [
-      { name: 'Auth Service', sub: 'Firebase Auth / JWT', color: 'from-blue-500 to-blue-600' },
-      { name: 'Sales Service', sub: 'CT bán hàng, Trả hàng', color: 'from-blue-500 to-orange-600' },
-      { name: 'Debt Service', sub: 'Công nợ, Bù trừ', color: 'from-blue-500 to-yellow-600' },
-      { name: 'Print Service', sub: 'Puppeteer + React-PDF', color: 'from-blue-500 to-orange-600' },
-    ],
+    label: 'Dịch vụ hệ thống',
+    icon: Shield,
+    color: 'text-orange-400',
+    borderColor: 'border-orange-500/20',
+    bgColor: 'bg-orange-500/[0.06]',
+    items: ['Xác thực (Firebase Auth)', 'Bán hàng & Trả hàng', 'Công nợ & Bù trừ', 'In phiếu (Puppeteer)'],
   },
   {
-    label: 'Data',
-    items: [
-      { name: 'MongoDB Atlas', sub: '9 Collections • Flexible Schema', color: 'from-emerald-500 to-emerald-600' },
-      { name: 'Cloud Storage', sub: 'Files & Backups', color: 'from-emerald-500 to-teal-600' },
-    ],
+    label: 'Lưu trữ dữ liệu',
+    icon: Database,
+    color: 'text-emerald-400',
+    borderColor: 'border-emerald-500/20',
+    bgColor: 'bg-emerald-500/[0.06]',
+    items: ['MongoDB Atlas (9 collections)', 'Cloud Storage (Files & Backups)'],
   },
 ]
 
@@ -44,8 +48,6 @@ const collections = [
 export function Architecture() {
   return (
     <section id={sectionIds.architecture} className="py-16 sm:py-24 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/5 to-transparent" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Kiến trúc"
@@ -53,35 +55,41 @@ export function Architecture() {
           description="Kiến trúc phân tầng, serverless, auto-scale trên Google Cloud Platform."
         />
 
-        {/* Architecture layers */}
-        <div className="max-w-4xl mx-auto space-y-6">
-          {layers.map((layer, layerIdx) => (
-            <ScrollReveal key={layer.label} delay={layerIdx * 0.15}>
+        {/* Architecture layers — vertical flow */}
+        <div className="max-w-3xl mx-auto">
+          {layers.map((layer, idx) => (
+            <ScrollReveal key={layer.label}>
               <div className="relative">
-                {/* Layer label */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">{layer.label}</span>
-                  <div className="flex-1 h-px bg-white/5" />
-                </div>
-
-                {/* Layer items */}
-                <div className={`grid gap-3 ${layer.items.length === 1 ? 'grid-cols-1' : layer.items.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}`}>
-                  {layer.items.map((item) => (
-                    <div
-                      key={item.name}
-                      className="relative rounded-xl border border-white/5 bg-white/[0.02] p-4 hover:border-white/10 hover:scale-[1.02] transition-all duration-200 overflow-hidden"
-                    >
-                      <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${item.color}`} />
-                      <h4 className="text-sm font-semibold text-white mb-1">{item.name}</h4>
-                      <p className="text-xs text-gray-500">{item.sub}</p>
+                {/* Layer card */}
+                <div className={`rounded-2xl border ${layer.borderColor} ${layer.bgColor} p-6 sm:p-8`}>
+                  {/* Layer header */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className={`w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center`}>
+                      <layer.icon size={20} className={layer.color} />
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="text-base font-semibold text-white">{layer.label}</h3>
+                      <span className="text-[10px] text-gray-500 uppercase tracking-widest">Layer {idx + 1}</span>
+                    </div>
+                  </div>
+
+                  {/* Layer items as tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {layer.items.map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1.5 text-sm rounded-lg bg-white/[0.06] border border-white/[0.08] text-gray-300"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Connector arrow */}
-                {layerIdx < layers.length - 1 && (
-                  <div className="flex justify-center my-2">
-                    <div className="w-px h-6 bg-gradient-to-b from-white/10 to-white/5" />
+                {/* Connector */}
+                {idx < layers.length - 1 && (
+                  <div className="flex justify-center py-3">
+                    <ArrowDown size={16} className="text-gray-600" />
                   </div>
                 )}
               </div>
@@ -90,14 +98,14 @@ export function Architecture() {
         </div>
 
         {/* MongoDB Collections */}
-        <ScrollReveal delay={0.4}>
-          <div className="mt-16 max-w-4xl mx-auto">
-            <h3 className="text-lg font-semibold text-white mb-4 text-center">MongoDB Collections</h3>
+        <ScrollReveal>
+          <div className="mt-14 max-w-3xl mx-auto">
+            <h3 className="text-sm font-semibold text-gray-400 mb-4 text-center uppercase tracking-widest">MongoDB Collections</h3>
             <div className="flex flex-wrap justify-center gap-2">
               {collections.map((col) => (
                 <span
                   key={col}
-                  className="px-3 py-1.5 text-xs font-mono rounded-lg bg-emerald-500/[0.08] border border-emerald-500/15 text-emerald-400/80 hover:bg-emerald-500/15 hover:border-emerald-500/25 transition-colors cursor-default"
+                  className="px-3 py-1.5 text-xs font-mono rounded-lg bg-emerald-500/[0.08] border border-emerald-500/15 text-emerald-400/80 hover:bg-emerald-500/15 transition-colors cursor-default"
                 >
                   {col}
                 </span>
