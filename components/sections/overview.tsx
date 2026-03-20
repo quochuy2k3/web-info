@@ -11,9 +11,9 @@ const highlights = [
     icon: Zap,
     title: 'Tốc độ thao tác',
     description: 'Lập phiếu bán hàng trong < 30 giây',
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/10',
-    border: 'border-amber-500/20',
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/10',
+    border: 'border-blue-500/20',
   },
   {
     icon: BarChart3,
@@ -35,9 +35,9 @@ const highlights = [
     icon: Target,
     title: 'Đơn giản hóa',
     description: 'Bỏ kế toán sổ cái, BCTC, thuế phức tạp',
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/10',
-    border: 'border-amber-500/20',
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/10',
+    border: 'border-blue-500/20',
   },
 ]
 

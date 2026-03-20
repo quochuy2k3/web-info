@@ -101,7 +101,7 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             <button onClick={scrollToTop} className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-orange-500 flex items-center justify-center text-white font-bold text-sm">
                 BA
               </div>
               <span className="text-sm font-semibold text-gray-300 group-hover:text-white transition-colors hidden sm:block">
@@ -119,7 +119,7 @@ export function Navigation() {
                     href={item.href}
                     className={`px-3 py-1.5 text-sm rounded-lg transition-all duration-200 ${
                       isActive
-                        ? 'text-amber-400 bg-amber-500/10'
+                        ? 'text-blue-400 bg-blue-500/10'
                         : 'text-gray-400 hover:text-white hover:bg-white/5'
                     }`}
                   >
@@ -159,7 +159,7 @@ export function Navigation() {
                       onClick={(e) => handleMobileNavClick(e, item.href)}
                       className={`block px-4 py-3 text-sm rounded-lg transition-colors ${
                         isActive
-                          ? 'text-amber-400 bg-amber-500/10 font-medium'
+                          ? 'text-blue-400 bg-blue-500/10 font-medium'
                           : 'text-gray-400 hover:text-white hover:bg-white/5'
                       }`}
                     >
@@ -181,7 +181,7 @@ export function Navigation() {
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={scrollToTop}
             aria-label="Về đầu trang"
-            className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-amber-600/80 backdrop-blur-sm border border-amber-500/30 flex items-center justify-center text-white hover:bg-amber-500 transition-colors shadow-lg shadow-amber-500/20"
+            className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-blue-600/80 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center text-white hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20"
           >
             <ChevronUp size={18} />
           </motion.button>

@@ -20,7 +20,7 @@ export function SectionHeader({
   return (
     <div className={`flex flex-col gap-3 sm:gap-4 mb-10 sm:mb-16 ${alignClass}`}>
       <ScrollReveal>
-        <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold tracking-widest uppercase rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+        <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold tracking-widest uppercase rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
           {label}
         </span>
       </ScrollReveal>

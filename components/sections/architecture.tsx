@@ -9,7 +9,7 @@ const layers = [
   {
     label: 'Client',
     items: [
-      { name: 'Next.js Frontend', sub: 'SSR/SSG • Tailwind CSS', color: 'from-amber-500 to-amber-600' },
+      { name: 'Next.js Frontend', sub: 'SSR/SSG • Tailwind CSS', color: 'from-blue-500 to-blue-600' },
     ],
   },
   {
@@ -22,10 +22,10 @@ const layers = [
   {
     label: 'Services',
     items: [
-      { name: 'Auth Service', sub: 'Firebase Auth / JWT', color: 'from-amber-500 to-amber-600' },
-      { name: 'Sales Service', sub: 'CT bán hàng, Trả hàng', color: 'from-amber-500 to-orange-600' },
-      { name: 'Debt Service', sub: 'Công nợ, Bù trừ', color: 'from-amber-500 to-yellow-600' },
-      { name: 'Print Service', sub: 'Puppeteer + React-PDF', color: 'from-amber-500 to-orange-600' },
+      { name: 'Auth Service', sub: 'Firebase Auth / JWT', color: 'from-blue-500 to-blue-600' },
+      { name: 'Sales Service', sub: 'CT bán hàng, Trả hàng', color: 'from-blue-500 to-orange-600' },
+      { name: 'Debt Service', sub: 'Công nợ, Bù trừ', color: 'from-blue-500 to-yellow-600' },
+      { name: 'Print Service', sub: 'Puppeteer + React-PDF', color: 'from-blue-500 to-orange-600' },
     ],
   },
   {
@@ -45,7 +45,7 @@ const collections = [
 export function Architecture() {
   return (
     <section id={sectionIds.architecture} className="py-16 sm:py-24 lg:py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/5 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader

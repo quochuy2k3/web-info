@@ -16,7 +16,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
 }
 
 const colorMap: Record<string, { text: string; bg: string; border: string; glow: string }> = {
-  amber: { text: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', glow: 'shadow-amber-500/10' },
+  blue: { text: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', glow: 'shadow-blue-500/10' },
   cyan: { text: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', glow: 'shadow-cyan-500/10' },
   emerald: { text: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', glow: 'shadow-emerald-500/10' },
   orange: { text: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20', glow: 'shadow-orange-500/10' },
@@ -28,7 +28,7 @@ export function TechStack() {
   return (
     <section id={sectionIds.techStack} className="py-16 sm:py-24 lg:py-32 relative">
       {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/5 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/5 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader

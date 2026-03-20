@@ -23,11 +23,11 @@ function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: 
     <Link href={`/modules/${module.id}`} className="block h-full">
       <div className={`glow-card relative overflow-hidden h-full group cursor-pointer ${
         isCore
-          ? 'glow-card-core border-amber-500/25 shadow-[0_0_40px_rgba(245,158,11,0.08)]'
+          ? 'glow-card-core border-blue-500/25 shadow-[0_0_40px_rgba(245,158,11,0.08)]'
           : ''
       } ${isCore ? 'p-8' : 'p-6'}`}>
         {/* Large watermark number */}
-        <span className={`absolute top-3 right-4 font-bold text-amber-500/20 pointer-events-none select-none ${
+        <span className={`absolute top-3 right-4 font-bold text-blue-500/20 pointer-events-none select-none ${
           isCore ? 'text-6xl' : 'text-4xl'
         }`}>
           {displayNumber}
@@ -43,7 +43,7 @@ function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: 
         {/* Module ID + Name */}
         <div className="mb-3 relative z-10">
           <span className="text-xs font-mono text-gray-500">{module.id.toUpperCase()}</span>
-          <h3 className={`font-semibold text-white mt-0.5 group-hover:text-amber-300 transition-colors ${
+          <h3 className={`font-semibold text-white mt-0.5 group-hover:text-blue-300 transition-colors ${
             isCore ? 'text-lg' : 'text-base'
           }`}>
             {module.name}
@@ -53,7 +53,7 @@ function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: 
         {/* Type badge */}
         <div className="mb-4 relative z-10">
           <span className={`text-[10px] font-medium px-2 py-0.5 rounded ${
-            isCore ? 'bg-amber-500/15 text-amber-300' : 'bg-white/5 text-gray-500'
+            isCore ? 'bg-blue-500/15 text-blue-300' : 'bg-white/5 text-gray-500'
           }`}>
             {module.type}
           </span>
@@ -72,10 +72,10 @@ function ModuleCard({ module, displayNumber }: { module: Module; displayNumber: 
             <span className="text-gray-400 font-medium">{module.totalEffort}</span> man-days
           </div>
           <div className="flex items-center gap-2">
-            <span className={`font-semibold ${isCore ? 'text-base text-amber-400' : 'text-sm text-amber-400'}`}>
+            <span className={`font-semibold ${isCore ? 'text-base text-blue-400' : 'text-sm text-blue-400'}`}>
               {formatCurrency(module.price)}
             </span>
-            <ArrowRight size={14} className="text-amber-400/0 group-hover:text-amber-400 transition-colors" />
+            <ArrowRight size={14} className="text-blue-400/0 group-hover:text-blue-400 transition-colors" />
           </div>
         </div>
       </div>

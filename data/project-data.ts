@@ -82,7 +82,7 @@ export const techStack = [
     tech: 'Next.js (React)',
     icon: 'Monitor',
     description: 'SSR/SSG, responsive web app, Tailwind CSS',
-    color: 'amber',
+    color: 'blue',
   },
   {
     layer: 'Backend API',

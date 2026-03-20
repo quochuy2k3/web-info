@@ -8,7 +8,7 @@ import { SectionHeader } from '@/components/ui/section-header'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 const phaseColors = [
-  { bg: 'bg-amber-500', border: 'border-amber-500/30', glow: 'shadow-amber-500/30', text: 'text-amber-400', bgLight: 'bg-amber-500/10' },
+  { bg: 'bg-blue-500', border: 'border-blue-500/30', glow: 'shadow-blue-500/30', text: 'text-blue-400', bgLight: 'bg-blue-500/10' },
   { bg: 'bg-cyan-500', border: 'border-cyan-500/30', glow: 'shadow-cyan-500/30', text: 'text-cyan-400', bgLight: 'bg-cyan-500/10' },
   { bg: 'bg-rose-500', border: 'border-rose-500/30', glow: 'shadow-rose-500/30', text: 'text-rose-400', bgLight: 'bg-rose-500/10' },
   { bg: 'bg-emerald-500', border: 'border-emerald-500/30', glow: 'shadow-emerald-500/30', text: 'text-emerald-400', bgLight: 'bg-emerald-500/10' },
@@ -71,10 +71,10 @@ export function Timeline() {
                           initial={{ scale: 0.9, opacity: 0 }}
                           whileInView={{ scale: 1, opacity: 1 }}
                           viewport={{ once: true }}
-                          className="mt-4 flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20"
+                          className="mt-4 flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500/10 to-orange-500/10 border border-blue-500/20"
                         >
-                          <Milestone size={16} className="text-amber-400" />
-                          <span className="text-sm font-semibold text-amber-300">{phase.milestoneLabel}</span>
+                          <Milestone size={16} className="text-blue-400" />
+                          <span className="text-sm font-semibold text-blue-300">{phase.milestoneLabel}</span>
                         </motion.div>
                       )}
                     </div>
