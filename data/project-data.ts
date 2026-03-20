@@ -129,7 +129,7 @@ export const modules: Module[] = [
     effortFE: 5,
     effortBE: 4,
     totalEffort: 9,
-    price: 15000000,
+    price: 12000000,
     icon: 'Users',
     description:
       'Quản lý toàn bộ thông tin 1.564 khách hàng. Hỗ trợ tìm kiếm nhanh theo tên/biệt danh, SĐT, mã KH. Quick action: Lập CT bán hàng hoặc Thu tiền trực tiếp từ danh sách.',
@@ -172,7 +172,7 @@ export const modules: Module[] = [
     effortFE: 6,
     effortBE: 4,
     totalEffort: 10,
-    price: 15000000,
+    price: 12000000,
     icon: 'Package',
     description:
       'Quản lý 3.734 sản phẩm phụ tùng máy nông nghiệp. 25 loại đơn vị tính. Dashboard cảnh báo tồn kho. Hỗ trợ 3 mức giá bán.',
@@ -213,7 +213,7 @@ export const modules: Module[] = [
     effortFE: 5,
     effortBE: 4,
     totalEffort: 9,
-    price: 15000000,
+    price: 12000000,
     icon: 'FileText',
     description:
       'Lập báo giá gửi KH. Có thời hạn hiệu lực. Chuyển đổi thành CT bán hàng. Trạng thái: Nháp → Đã gửi → Đã chuyển đổi / Hết hạn.',
@@ -287,7 +287,7 @@ export const modules: Module[] = [
     effortFE: 5,
     effortBE: 4,
     totalEffort: 9,
-    price: 15000000,
+    price: 12000000,
     icon: 'RotateCcw',
     description:
       'Khi KH trả lại hàng đã mua. 2 phương thức: Giảm trừ công nợ hoặc Trả lại tiền mặt.',
@@ -353,7 +353,7 @@ export const modules: Module[] = [
     effortFE: 4,
     effortBE: 3,
     totalEffort: 7,
-    price: 10000000,
+    price: 8000000,
     icon: 'ArrowLeftRight',
     description:
       'Bù trừ công nợ phải thu và phải trả cho đối tượng vừa là KH vừa là NCC.',
@@ -375,7 +375,7 @@ export const modules: Module[] = [
     effortFE: 4,
     effortBE: 3,
     totalEffort: 7,
-    price: 10000000,
+    price: 8000000,
     icon: 'Tag',
     description:
       'Thiết lập chính sách giá bán, chiết khấu cho từng nhóm KH, từng nhóm HH, trong khoảng thời gian nhất định. Auto apply khi lập CT bán hàng.',
@@ -404,7 +404,7 @@ export const supplementary: Module[] = [
     effortFE: 5,
     effortBE: 3,
     totalEffort: 8,
-    price: 15000000,
+    price: 12000000,
     icon: 'Printer',
     description: 'Phiếu XKBH Custom (header DN, công nợ, lưu ý 3 ngày) + Phiếu XK 02-VT theo TT99/2025 (mẫu kế toán chuẩn, chữ ký 5 người).',
     useCases: [
@@ -420,7 +420,7 @@ export const supplementary: Module[] = [
     effortFE: 3,
     effortBE: 3,
     totalEffort: 6,
-    price: 10000000,
+    price: 8000000,
     icon: 'Shield',
     description: 'Login/Logout, 3 roles: Admin (toàn quyền) / NV bán hàng (lập phiếu, xem KH/HH, xem công nợ) / Kế toán (xem báo cáo, thu tiền, bù trừ, đối trừ).',
     useCases: [
@@ -437,7 +437,7 @@ export const supplementary: Module[] = [
     effortFE: 2,
     effortBE: 4,
     totalEffort: 6,
-    price: 10000000,
+    price: 8000000,
     icon: 'Upload',
     description: 'Import 1.564 KH + 3.734 HH từ Excel. Setup MongoDB schema, migration scripts, seed data. Config GCP (Cloud Run, Cloud Functions, Cloud Storage, Firebase Auth).',
     useCases: [
@@ -454,7 +454,7 @@ export const supplementary: Module[] = [
     effortFE: 5,
     effortBE: 5,
     totalEffort: 10,
-    price: 15000000,
+    price: 12000000,
     icon: 'TestTube',
     description: 'Unit + Integration test. UAT với dữ liệu thực (1.564 KH + 3.734 HH). Bug fix, performance optimize. Deploy GCP production.',
     useCases: [
@@ -522,19 +522,19 @@ export const paymentTerms = [
     milestone: 'Sau demo v1 (cuối tuần 4)',
     deliverables: 'M01 + M02 + M04 (Bán hàng) + M06 (Công nợ) + In phiếu hoạt động đúng với data thực',
     percent: 50,
-    amount: 100000000,
+    amount: 87500000,
   },
   {
     phase: 2,
     milestone: 'Nghiệm thu go-live (cuối tuần 8)',
     deliverables: 'Toàn bộ 8 module + deploy GCP + training + bàn giao source code & tài liệu',
     percent: 50,
-    amount: 100000000,
+    amount: 87500000,
   },
 ]
 
 export const comparison = [
-  { criteria: 'Chi phí năm 1', misa: '~8.000.000đ', custom: '200.000.000đ', customWin: false },
+  { criteria: 'Chi phí năm 1', misa: '~8.000.000đ', custom: '175.000.000đ', customWin: false },
   { criteria: 'Chi phí năm 2+', misa: '~8.000.000đ/năm', custom: '~12-18 triệu/năm (GCP + duy trì)', customWin: true },
   { criteria: 'Custom nghiệp vụ', misa: 'Không', custom: '100% theo yêu cầu', customWin: true },
   { criteria: 'Sở hữu source code', misa: 'Không', custom: 'Có (100%)', customWin: true },
@@ -573,12 +573,12 @@ export const warranty = {
 }
 
 export const pricingSummary = {
-  subtotal: 195000000,
-  pmOverhead: 5000000,
-  pmOverheadPercent: 3,
-  total: 200000000,
-  totalWords: 'Hai trăm triệu đồng',
-  rate: 1650000,
-  rateUSD: 20,
+  subtotal: 169000000,
+  pmOverhead: 6000000,
+  pmOverheadPercent: 4,
+  total: 175000000,
+  totalWords: 'Một trăm bảy mươi lăm triệu đồng',
+  rate: 1400000,
+  rateUSD: 17.5,
   totalDays: 122,
 }
