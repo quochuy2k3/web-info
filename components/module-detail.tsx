@@ -6,8 +6,11 @@ import {
   ArrowLeft, Users, Package, FileText, ShoppingCart, RotateCcw,
   Wallet, ArrowLeftRight, Tag, Printer, Shield, Upload, TestTube,
   Database, ListChecks, Workflow, AlertTriangle, GitBranch, Columns3,
+  BookOpen, BarChart3,
 } from 'lucide-react'
 import { formatCurrency } from '@/lib/utils'
+import { moduleDiagrams } from '@/data/module-diagrams'
+import { MermaidDiagram } from '@/components/ui/mermaid-diagram'
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal'
 import type { Module } from '@/data/project-data'
 
@@ -223,6 +226,61 @@ export function ModuleDetail({ module }: { module: Module }) {
                       <span className="text-rose-400/60 mt-0.5">→</span>
                       <span>{effect}</span>
                     </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          )}
+
+          {/* Accounting Entries */}
+          {module.accountingEntries && module.accountingEntries.length > 0 && (
+            <ScrollReveal>
+              <div className="glow-card p-7">
+                <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                  <BookOpen size={20} className="text-cyan-400" />
+                  Bút toán Hạch toán
+                </h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-white/10">
+                        <th className="text-left py-2 text-gray-500 font-medium pr-4">Nghiệp vụ</th>
+                        <th className="text-left py-2 text-indigo-400 font-medium pr-4">Nợ (Debit)</th>
+                        <th className="text-left py-2 text-cyan-400 font-medium pr-4">Có (Credit)</th>
+                        <th className="text-left py-2 text-gray-500 font-medium hidden sm:table-cell">Diễn giải</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {module.accountingEntries.map((ae) => (
+                        <tr key={ae.entry} className="border-b border-white/[0.03]">
+                          <td className="py-2.5 text-gray-300 font-medium pr-4">{ae.entry}</td>
+                          <td className="py-2.5 text-indigo-300 font-mono text-xs pr-4">{ae.debit}</td>
+                          <td className="py-2.5 text-cyan-300 font-mono text-xs pr-4">{ae.credit}</td>
+                          <td className="py-2.5 text-gray-500 text-xs hidden sm:table-cell">{ae.description}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </ScrollReveal>
+          )}
+
+          {/* Diagrams */}
+          {moduleDiagrams[module.id] && moduleDiagrams[module.id].length > 0 && (
+            <ScrollReveal>
+              <div className="glow-card p-7">
+                <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                  <BarChart3 size={20} className="text-indigo-400" />
+                  Diagrams
+                </h2>
+                <div className="space-y-8">
+                  {moduleDiagrams[module.id].map((diagram, i) => (
+                    <MermaidDiagram
+                      key={i}
+                      chart={diagram.chart}
+                      title={diagram.title}
+                    />
                   ))}
                 </div>
               </div>

@@ -33,6 +33,7 @@ export interface Module {
   flow?: string
   statuses?: string[]
   comparisonTable?: { label: string; sell: string; return: string }[]
+  accountingEntries?: { entry: string; debit: string; credit: string; description: string }[]
 }
 
 export const projectInfo = {
@@ -268,6 +269,13 @@ export const modules: Module[] = [
       'Cập nhật 3 trạng thái: Hóa đơn, Thanh toán, Xuất hàng',
     ],
     statuses: ['Chưa lập HĐ / Đã lập', 'Chưa TT / Đã TT 1 phần / Đã TT', 'Chưa xuất / Đã xuất đủ'],
+    accountingEntries: [
+      { entry: 'Doanh thu', debit: 'TK 131 (Phải thu KH)', credit: 'TK 511 (Doanh thu bán hàng)', description: 'Ghi nhận doanh thu bán hàng (chưa thu tiền)' },
+      { entry: 'Thuế GTGT', debit: 'TK 131 (Phải thu KH)', credit: 'TK 3331 (Thuế GTGT phải nộp)', description: 'Ghi nhận thuế GTGT đầu ra' },
+      { entry: 'Giá vốn', debit: 'TK 632 (Giá vốn hàng bán)', credit: 'TK 156 (Hàng hóa)', description: 'Kết chuyển giá vốn hàng xuất bán' },
+      { entry: 'Thu TM', debit: 'TK 111 (Tiền mặt)', credit: 'TK 131 (Phải thu KH)', description: 'Thu tiền mặt ngay (nếu có)' },
+      { entry: 'Thu CK', debit: 'TK 112 (Tiền gửi NH)', credit: 'TK 131 (Phải thu KH)', description: 'Thu chuyển khoản ngay (nếu có)' },
+    ],
     useCases: [
       { id: 'UC04-01', name: 'Lập phiếu bán hàng mới', description: 'Full flow: Thêm → Chọn KH → auto load công nợ đầu → Thêm dòng hàng → search HH → auto fill giá/DVT → Nhập SL → Chọn PT thu tiền → Cất' },
       { id: 'UC04-02', name: 'Lập từ Báo giá', description: 'Kế thừa data từ Báo giá M03' },
@@ -299,6 +307,11 @@ export const modules: Module[] = [
       'Giảm công nợ KH (nếu Giảm trừ) HOẶC sinh phiếu chi (nếu Trả lại tiền mặt)',
       'Tăng tồn kho (nếu tích Kiêm phiếu nhập kho)',
       'Cập nhật trạng thái nhập hàng',
+    ],
+    accountingEntries: [
+      { entry: 'Giảm doanh thu', debit: 'TK 5212 (Hàng bán bị trả lại)', credit: 'TK 131 (Phải thu KH)', description: 'Giảm doanh thu do trả hàng (TT200). TT133: Nợ TK 511' },
+      { entry: 'Hoàn thuế', debit: 'TK 3331 (Thuế GTGT)', credit: 'TK 131 (Phải thu KH)', description: 'Hoàn thuế GTGT đầu ra đã ghi nhận' },
+      { entry: 'Hoàn giá vốn', debit: 'TK 156 (Hàng hóa)', credit: 'TK 632 (Giá vốn)', description: 'Nhập lại hàng tồn kho, giảm giá vốn' },
     ],
     comparisonTable: [
       { label: 'Phương thức', sell: 'Chưa thu / Thu ngay', return: 'Giảm trừ nợ / Hoàn tiền' },
