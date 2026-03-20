@@ -44,7 +44,7 @@ const collections = [
 
 export function Architecture() {
   return (
-    <section id={sectionIds.architecture} className="py-24 sm:py-32 relative">
+    <section id={sectionIds.architecture} className="py-16 sm:py-24 lg:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/5 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,7 +66,7 @@ export function Architecture() {
                 </div>
 
                 {/* Layer items */}
-                <div className={`grid gap-3 ${layer.items.length === 1 ? 'grid-cols-1' : layer.items.length === 2 ? 'grid-cols-2' : 'grid-cols-2 lg:grid-cols-4'}`}>
+                <div className={`grid gap-3 ${layer.items.length === 1 ? 'grid-cols-1' : layer.items.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}`}>
                   {layer.items.map((item, i) => (
                     <motion.div
                       key={item.name}

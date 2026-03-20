@@ -39,7 +39,7 @@ const cards = [
 
 export function Warranty() {
   return (
-    <section id={sectionIds.warranty} className="py-24 sm:py-32 relative">
+    <section id={sectionIds.warranty} className="py-16 sm:py-24 lg:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-950/5 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

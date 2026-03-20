@@ -8,7 +8,7 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal'
 
 export function Comparison() {
   return (
-    <section id={sectionIds.comparison} className="py-24 sm:py-32 relative">
+    <section id={sectionIds.comparison} className="py-16 sm:py-24 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="So sánh"

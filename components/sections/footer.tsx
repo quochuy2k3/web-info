@@ -8,15 +8,15 @@ import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 export function Footer() {
   return (
-    <section id={sectionIds.contact} className="py-24 sm:py-32 relative">
+    <section id={sectionIds.contact} className="py-16 sm:py-24 lg:py-32 relative">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/10 via-transparent to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* CTA */}
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
               Sẵn sàng bắt đầu?
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
@@ -37,7 +37,7 @@ export function Footer() {
 
         {/* Contact info */}
         <ScrollReveal delay={0.2}>
-          <div className="flex flex-wrap justify-center gap-8 mb-16">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-10 sm:mb-16">
             <div className="flex items-center gap-3 text-gray-400">
               <MapPin size={16} className="text-indigo-400" />
               <span className="text-sm">{projectInfo.provider.location}</span>

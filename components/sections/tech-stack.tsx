@@ -26,7 +26,7 @@ const colorMap: Record<string, { text: string; bg: string; border: string; glow:
 
 export function TechStack() {
   return (
-    <section id={sectionIds.techStack} className="py-24 sm:py-32 relative">
+    <section id={sectionIds.techStack} className="py-16 sm:py-24 lg:py-32 relative">
       {/* Background accent */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-950/5 to-transparent" />
 

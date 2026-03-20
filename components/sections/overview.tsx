@@ -43,7 +43,7 @@ const highlights = [
 
 export function Overview() {
   return (
-    <section id={sectionIds.overview} className="py-24 sm:py-32 relative">
+    <section id={sectionIds.overview} className="py-16 sm:py-24 lg:py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Tổng quan"

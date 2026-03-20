@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronUp } from 'lucide-react'
 import { sectionIds } from '@/lib/utils'
@@ -45,6 +45,28 @@ export function Navigation() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  const handleMobileNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault()
+      const targetId = href.replace('#', '')
+      const targetEl = document.getElementById(targetId)
+
+      // Close the mobile menu immediately
+      setMobileOpen(false)
+
+      // Wait for the exit animation to complete before scrolling.
+      // The exit animation duration matches the motion.div default (~300ms).
+      setTimeout(() => {
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' })
+        }
+        // Update the URL hash without triggering a scroll
+        window.history.pushState(null, '', href)
+      }, 350)
+    },
+    []
+  )
 
   return (
     <>
@@ -103,17 +125,25 @@ export function Navigation() {
               exit={{ height: 0, opacity: 0 }}
               className="lg:hidden border-t border-white/5 overflow-hidden"
             >
-              <div className="px-4 py-3 space-y-1">
-                {navItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ))}
+              <div className="px-4 py-3 space-y-0.5">
+                {navItems.map((item) => {
+                  const sectionId = item.href.replace('#', '')
+                  const isActive = activeSection === sectionId
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={(e) => handleMobileNavClick(e, item.href)}
+                      className={`block px-4 py-3 text-sm rounded-lg transition-colors ${
+                        isActive
+                          ? 'text-indigo-400 bg-indigo-500/10 font-medium'
+                          : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  )
+                })}
               </div>
             </motion.div>
           )}
