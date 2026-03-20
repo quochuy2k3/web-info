@@ -270,11 +270,11 @@ export const modules: Module[] = [
     ],
     statuses: ['Chưa lập hóa đơn / Đã lập', 'Chưa thanh toán / Đã thanh toán 1 phần / Đã thanh toán đủ', 'Chưa xuất hàng / Đã xuất đủ'],
     accountingEntries: [
-      { entry: 'Ghi nhận doanh thu', debit: 'Phải thu khách hàng (TK 131)', credit: 'Doanh thu bán hàng (TK 511)', description: 'Ghi nhận doanh thu khi bán hàng ghi nợ' },
-      { entry: 'Ghi nhận thuế', debit: 'Phải thu khách hàng (TK 131)', credit: 'Thuế GTGT phải nộp (TK 3331)', description: 'Ghi nhận thuế giá trị gia tăng đầu ra' },
-      { entry: 'Ghi nhận giá vốn', debit: 'Giá vốn hàng bán (TK 632)', credit: 'Hàng hóa tồn kho (TK 156)', description: 'Kết chuyển giá vốn hàng xuất bán' },
-      { entry: 'Thu tiền mặt', debit: 'Tiền mặt (TK 111)', credit: 'Phải thu khách hàng (TK 131)', description: 'Thu tiền mặt ngay tại chỗ (nếu có)' },
-      { entry: 'Thu chuyển khoản', debit: 'Tiền gửi ngân hàng (TK 112)', credit: 'Phải thu khách hàng (TK 131)', description: 'Thu chuyển khoản ngay (nếu có)' },
+      { entry: 'Ghi nhận doanh thu', debit: 'Phải thu khách hàng', credit: 'Doanh thu bán hàng', description: 'Ghi nhận doanh thu khi bán hàng ghi nợ' },
+      { entry: 'Ghi nhận thuế', debit: 'Phải thu khách hàng', credit: 'Thuế GTGT phải nộp', description: 'Ghi nhận thuế giá trị gia tăng đầu ra' },
+      { entry: 'Ghi nhận giá vốn', debit: 'Giá vốn hàng bán', credit: 'Hàng hóa tồn kho', description: 'Kết chuyển giá vốn hàng xuất bán' },
+      { entry: 'Thu tiền mặt', debit: 'Tiền mặt', credit: 'Phải thu khách hàng', description: 'Thu tiền mặt ngay tại chỗ (nếu có)' },
+      { entry: 'Thu chuyển khoản', debit: 'Tiền gửi ngân hàng', credit: 'Phải thu khách hàng', description: 'Thu chuyển khoản ngay (nếu có)' },
     ],
     useCases: [
       { id: 'UC04-01', name: 'Lập phiếu bán hàng mới', description: 'Thêm → Chọn khách hàng → tự động tải công nợ đầu → Thêm dòng hàng → tìm hàng hóa → tự động điền giá/đơn vị tính → Nhập số lượng → Chọn phương thức thu tiền → Lưu' },
@@ -309,9 +309,9 @@ export const modules: Module[] = [
       'Cập nhật trạng thái nhập hàng',
     ],
     accountingEntries: [
-      { entry: 'Giảm doanh thu', debit: 'Hàng bán bị trả lại (TK 5212)', credit: 'Phải thu khách hàng (TK 131)', description: 'Giảm doanh thu do khách trả hàng' },
-      { entry: 'Hoàn thuế', debit: 'Thuế GTGT phải nộp (TK 3331)', credit: 'Phải thu khách hàng (TK 131)', description: 'Hoàn lại thuế giá trị gia tăng đầu ra' },
-      { entry: 'Hoàn giá vốn', debit: 'Hàng hóa tồn kho (TK 156)', credit: 'Giá vốn hàng bán (TK 632)', description: 'Nhập lại hàng vào kho, giảm giá vốn' },
+      { entry: 'Giảm doanh thu', debit: 'Hàng bán bị trả lại', credit: 'Phải thu khách hàng', description: 'Giảm doanh thu do khách trả hàng' },
+      { entry: 'Hoàn thuế', debit: 'Thuế GTGT phải nộp', credit: 'Phải thu khách hàng', description: 'Hoàn lại thuế giá trị gia tăng đầu ra' },
+      { entry: 'Hoàn giá vốn', debit: 'Hàng hóa tồn kho', credit: 'Giá vốn hàng bán', description: 'Nhập lại hàng vào kho, giảm giá vốn' },
     ],
     comparisonTable: [
       { label: 'Phương thức', sell: 'Chưa thu / Thu ngay', return: 'Giảm trừ nợ / Hoàn tiền' },
