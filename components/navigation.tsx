@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronUp } from 'lucide-react'
 import { sectionIds } from '@/lib/utils'
@@ -17,30 +17,56 @@ const navItems = [
 ]
 
 export function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const lastScrollY = useRef(0)
+  const ticking = useRef(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100)
+      if (ticking.current) return
+      ticking.current = true
 
-      const sections = Object.values(sectionIds)
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i])
-        if (el) {
-          const rect = el.getBoundingClientRect()
-          if (rect.top <= 150) {
-            setActiveSection(sections[i])
-            break
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY
+        const delta = currentY - lastScrollY.current
+
+        if (currentY < 100) {
+          // At the top — hide nav (hero visible)
+          setVisible(false)
+        } else if (delta < -5) {
+          // Scrolling UP — show nav
+          setVisible(true)
+        } else if (delta > 10) {
+          // Scrolling DOWN — hide nav (only if not mobile menu open)
+          if (!mobileOpen) {
+            setVisible(false)
           }
         }
-      }
+
+        lastScrollY.current = currentY
+
+        // Active section detection
+        const sections = Object.values(sectionIds)
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const el = document.getElementById(sections[i])
+          if (el) {
+            const rect = el.getBoundingClientRect()
+            if (rect.top <= 150) {
+              setActiveSection(sections[i])
+              break
+            }
+          }
+        }
+
+        ticking.current = false
+      })
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [mobileOpen])
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -52,16 +78,12 @@ export function Navigation() {
       const targetId = href.replace('#', '')
       const targetEl = document.getElementById(targetId)
 
-      // Close the mobile menu immediately
       setMobileOpen(false)
 
-      // Wait for the exit animation to complete before scrolling.
-      // The exit animation duration matches the motion.div default (~300ms).
       setTimeout(() => {
         if (targetEl) {
           targetEl.scrollIntoView({ behavior: 'smooth' })
         }
-        // Update the URL hash without triggering a scroll
         window.history.pushState(null, '', href)
       }, 350)
     },
@@ -72,12 +94,12 @@ export function Navigation() {
     <>
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: scrolled ? 0 : -100 }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
+        animate={{ y: visible ? 0 : -100 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
         className="fixed top-0 left-0 right-0 z-50 glass-nav"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             <button onClick={scrollToTop} className="flex items-center gap-2 group">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-white font-bold text-sm">
                 BA
@@ -123,6 +145,7 @@ export function Navigation() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25 }}
               className="lg:hidden border-t border-white/5 overflow-hidden"
             >
               <div className="px-4 py-3 space-y-0.5">
@@ -151,7 +174,7 @@ export function Navigation() {
       </motion.nav>
 
       <AnimatePresence>
-        {scrolled && (
+        {visible && (
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}

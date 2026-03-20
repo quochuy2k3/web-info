@@ -67,19 +67,17 @@ function ModuleCard({ module }: { module: Module }) {
           {module.description}
         </p>
 
-        {/* Footer: Effort + Price */}
+        {/* Footer: Effort + Price + Arrow */}
         <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
           <div className="text-xs text-gray-500">
             <span className="text-gray-400 font-medium">{module.totalEffort}</span> man-days
           </div>
-          <div className="text-sm font-semibold text-indigo-400">
-            {formatCurrency(module.price)}
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-semibold text-indigo-400">
+              {formatCurrency(module.price)}
+            </span>
+            <ArrowRight size={14} className="text-indigo-400/0 group-hover:text-indigo-400 transition-colors" />
           </div>
-        </div>
-
-        {/* Hover arrow */}
-        <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-          <ArrowRight size={16} className="text-indigo-400" />
         </div>
       </div>
     </Link>
