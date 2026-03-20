@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion'
 import { sectionIds } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
-import { MermaidDiagram } from '@/components/ui/mermaid-diagram'
-import { moduleDiagrams } from '@/data/module-diagrams'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 const layers = [
@@ -114,20 +112,6 @@ export function Architecture() {
             </div>
           </div>
         </ScrollReveal>
-        {/* System Flow Diagram */}
-        {moduleDiagrams.system && (
-          <ScrollReveal delay={0.5}>
-            <div className="mt-16 max-w-4xl mx-auto">
-              {moduleDiagrams.system.map((diagram, i) => (
-                <MermaidDiagram
-                  key={i}
-                  chart={diagram.chart}
-                  title={diagram.title}
-                />
-              ))}
-            </div>
-          </ScrollReveal>
-        )}
       </div>
     </section>
   )

@@ -264,45 +264,4 @@ export const moduleDiagrams: Record<string, { title: string; chart: string }[]> 
     },
   ],
 
-  system: [
-    {
-      title: 'Luong nghiep vu tong quan he thong',
-      chart: `flowchart TD
-  subgraph master ["Master Data"]
-    KH["M01\nKhach hang\n1.564 records"]
-    HH["M02\nHang hoa\n3.734 records"]
-    CS["M08\nChinh sach gia"]
-  end
-
-  subgraph core ["Nghiep vu chinh"]
-    BG["M03\nBao gia"]
-    BH["M04\nBan hang\nCORE"]
-    TL["M05\nTra lai hang"]
-  end
-
-  subgraph debt ["Cong no va Thanh toan"]
-    CN["M06\nCong no KH\nCORE"]
-    BuTru["M07\nBu tru\nCong no"]
-  end
-
-  subgraph support ["Bo tro"]
-    IN["P01\nIn phieu"]
-    AU["P02\nAuth"]
-  end
-
-  KH --> BG
-  KH --> BH
-  HH --> BG
-  HH --> BH
-  CS -->|Auto fill gia| BH
-  BG -->|Chuyen doi| BH
-  BH -->|Tang no| CN
-  BH -->|Giam ton kho| HH
-  TL -->|Giam no| CN
-  TL -->|Tang ton kho| HH
-  BuTru -->|Dieu chinh| CN
-  BH --> IN
-  CN -->|Thu tien| CN`,
-    },
-  ],
 }
