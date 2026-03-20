@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { sectionIds } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
@@ -67,17 +66,15 @@ export function Architecture() {
 
                 {/* Layer items */}
                 <div className={`grid gap-3 ${layer.items.length === 1 ? 'grid-cols-1' : layer.items.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'}`}>
-                  {layer.items.map((item, i) => (
-                    <motion.div
+                  {layer.items.map((item) => (
+                    <div
                       key={item.name}
-                      whileHover={{ scale: 1.02 }}
-                      className="relative rounded-xl border border-white/5 bg-white/[0.02] p-4 hover:border-white/10 transition-colors overflow-hidden"
+                      className="relative rounded-xl border border-white/5 bg-white/[0.02] p-4 hover:border-white/10 hover:scale-[1.02] transition-all duration-200 overflow-hidden"
                     >
-                      {/* Gradient accent bar */}
                       <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${item.color}`} />
                       <h4 className="text-sm font-semibold text-white mb-1">{item.name}</h4>
                       <p className="text-xs text-gray-500">{item.sub}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
@@ -97,17 +94,13 @@ export function Architecture() {
           <div className="mt-16 max-w-4xl mx-auto">
             <h3 className="text-lg font-semibold text-white mb-4 text-center">MongoDB Collections</h3>
             <div className="flex flex-wrap justify-center gap-2">
-              {collections.map((col, i) => (
-                <motion.span
+              {collections.map((col) => (
+                <span
                   key={col}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="px-3 py-1.5 text-xs font-mono rounded-lg bg-emerald-500/8 border border-emerald-500/15 text-emerald-400/80 hover:bg-emerald-500/15 hover:border-emerald-500/25 transition-colors cursor-default"
+                  className="px-3 py-1.5 text-xs font-mono rounded-lg bg-emerald-500/[0.08] border border-emerald-500/15 text-emerald-400/80 hover:bg-emerald-500/15 hover:border-emerald-500/25 transition-colors cursor-default"
                 >
                   {col}
-                </motion.span>
+                </span>
               ))}
             </div>
           </div>

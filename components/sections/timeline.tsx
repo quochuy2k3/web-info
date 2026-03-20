@@ -37,7 +37,7 @@ export function Timeline() {
                   <div className="relative pl-16 sm:pl-20">
                     {/* Dot */}
                     <div className={`absolute left-4 sm:left-6 top-1 w-4 h-4 rounded-full ${colors.bg} timeline-dot z-10`} />
-                    <div className={`absolute left-3 sm:left-5 top-0 w-6 h-6 rounded-full ${colors.bgLight} animate-ping motion-reduce:animate-none`} style={{ animationDuration: '3s' }} />
+                    <div className={`absolute left-3 sm:left-5 top-0 w-6 h-6 rounded-full ${colors.bgLight} opacity-50`} style={{ animationDuration: '3s' }} />
 
                     {/* Phase card */}
                     <div className={`glow-card p-6 border ${colors.border}`}>

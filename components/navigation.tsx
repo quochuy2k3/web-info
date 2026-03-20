@@ -22,6 +22,7 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState('')
   const lastScrollY = useRef(0)
   const ticking = useRef(false)
+  const activeSectionRef = useRef('')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,17 +48,19 @@ export function Navigation() {
 
         lastScrollY.current = currentY
 
-        // Active section detection
+        // Active section detection — throttled, guard setState
         const sections = Object.values(sectionIds)
+        let newActive = ''
         for (let i = sections.length - 1; i >= 0; i--) {
           const el = document.getElementById(sections[i])
-          if (el) {
-            const rect = el.getBoundingClientRect()
-            if (rect.top <= 150) {
-              setActiveSection(sections[i])
-              break
-            }
+          if (el && el.offsetTop <= currentY + 200) {
+            newActive = sections[i]
+            break
           }
+        }
+        if (newActive !== activeSectionRef.current) {
+          activeSectionRef.current = newActive
+          setActiveSection(newActive)
         }
 
         ticking.current = false

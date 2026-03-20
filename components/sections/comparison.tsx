@@ -4,7 +4,7 @@ import { Check, X, TrendingUp } from 'lucide-react'
 import { comparison } from '@/data/project-data'
 import { sectionIds } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
-import { StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal'
+import { ScrollReveal } from '@/components/ui/scroll-reveal'
 
 export function Comparison() {
   return (
@@ -34,9 +34,10 @@ export function Comparison() {
           </div>
 
           {/* Table rows */}
-          <StaggerContainer className="divide-y divide-white/[0.03]" staggerDelay={0.06}>
+          <ScrollReveal>
+            <div className="divide-y divide-white/[0.03]">
             {comparison.map((row) => (
-              <StaggerItem key={row.criteria}>
+              <div key={row.criteria}>
                 {/* Desktop row */}
                 <div className="hidden md:grid grid-cols-3 gap-4 px-5 py-4 table-row-hover rounded-lg transition-colors items-center">
                   <span className="text-sm font-medium text-white">{row.criteria}</span>
@@ -78,9 +79,10 @@ export function Comparison() {
                     </div>
                   </div>
                 </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

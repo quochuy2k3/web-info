@@ -47,40 +47,42 @@ export function Pricing() {
             <span className="text-right">Thành tiền</span>
           </div>
 
-          <StaggerContainer className="divide-y divide-white/[0.03]" staggerDelay={0.04}>
-            {allItems.map((item) => (
-              <StaggerItem key={item.id}>
-                {/* Desktop row */}
-                <div className={`hidden lg:grid grid-cols-[50px_1fr_200px_80px_80px_80px_130px] gap-3 px-5 py-3.5 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-blue-500/[0.03]' : ''}`}>
-                  <span className="text-xs font-mono text-blue-400">{item.id.toUpperCase()}</span>
-                  <span className="text-sm font-medium text-white flex items-center gap-2">
-                    {item.name}
-                    {item.isCore && <span className="text-[10px] px-1.5 py-0.5 rounded badge-core">CORE</span>}
-                  </span>
-                  <span className="text-xs text-gray-500">{item.type}</span>
-                  <span className="text-sm text-gray-400 text-right">{item.effortFE}</span>
-                  <span className="text-sm text-gray-400 text-right">{item.effortBE}</span>
-                  <span className="text-sm text-white font-medium text-right">{item.totalEffort}</span>
-                  <span className="text-sm font-semibold text-blue-400 text-right">{formatCurrency(item.price)}</span>
-                </div>
-
-                {/* Mobile card */}
-                <div className={`lg:hidden px-4 py-3 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-blue-500/[0.03]' : ''}`}>
-                  <div className="flex items-center justify-between mb-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono text-blue-400">{item.id.toUpperCase()}</span>
+          <ScrollReveal>
+            <div className="divide-y divide-white/[0.03]">
+              {allItems.map((item) => (
+                <div key={item.id}>
+                  {/* Desktop row */}
+                  <div className={`hidden lg:grid grid-cols-[50px_1fr_200px_80px_80px_80px_130px] gap-3 px-5 py-3.5 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-blue-500/[0.03]' : ''}`}>
+                    <span className="text-xs font-mono text-blue-400">{item.id.toUpperCase()}</span>
+                    <span className="text-sm font-medium text-white flex items-center gap-2">
+                      {item.name}
                       {item.isCore && <span className="text-[10px] px-1.5 py-0.5 rounded badge-core">CORE</span>}
-                    </div>
-                    <span className="text-xs text-gray-600">{item.totalEffort}d</span>
+                    </span>
+                    <span className="text-xs text-gray-500">{item.type}</span>
+                    <span className="text-sm text-gray-400 text-right">{item.effortFE}</span>
+                    <span className="text-sm text-gray-400 text-right">{item.effortBE}</span>
+                    <span className="text-sm text-white font-medium text-right">{item.totalEffort}</span>
+                    <span className="text-sm font-semibold text-blue-400 text-right">{formatCurrency(item.price)}</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-white">{item.name}</span>
-                    <span className="text-sm font-semibold text-blue-400 shrink-0 ml-3">{formatCurrency(item.price)}</span>
+
+                  {/* Mobile card */}
+                  <div className={`lg:hidden px-4 py-3 table-row-hover rounded-lg transition-colors ${item.isCore ? 'bg-blue-500/[0.03]' : ''}`}>
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-mono text-blue-400">{item.id.toUpperCase()}</span>
+                        {item.isCore && <span className="text-[10px] px-1.5 py-0.5 rounded badge-core">CORE</span>}
+                      </div>
+                      <span className="text-xs text-gray-600">{item.totalEffort}d</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-white">{item.name}</span>
+                      <span className="text-sm font-semibold text-blue-400 shrink-0 ml-3">{formatCurrency(item.price)}</span>
+                    </div>
                   </div>
                 </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+              ))}
+            </div>
+          </ScrollReveal>
 
           {/* Totals */}
           <ScrollReveal delay={0.3}>
