@@ -50,7 +50,7 @@ export const projectInfo = {
   goals: [
     'Tốc độ thao tác nhanh — lập phiếu bán hàng trong < 30 giây',
     'Tracking công nợ chính xác — realtime, phân tích aging tự động',
-    'In phiếu chuyên nghiệp — 2 mẫu: Custom + 02-VT theo TT99/2025',
+    'In phiếu chuyên nghiệp — 2 mẫu: Tùy chỉnh + 02-VT theo Thông tư 99/2025',
     'Đơn giản hóa — bỏ kế toán sổ cái, BCTC, thuế phức tạp',
     'Sở hữu 100% source code — không phụ thuộc vendor',
   ],
@@ -116,7 +116,7 @@ export const techStack = [
     layer: 'PDF / Print',
     tech: 'Puppeteer + React-PDF',
     icon: 'Printer',
-    description: 'Generate phiếu XKBH + 02-VT chuyên nghiệp',
+    description: 'Tạo phiếu Xuất kho Bán hàng + phiếu 02-VT chuyên nghiệp',
     color: 'rose',
   },
 ]
@@ -133,9 +133,9 @@ export const modules: Module[] = [
     price: 12000000,
     icon: 'Users',
     description:
-      'Quản lý toàn bộ thông tin 1.564 khách hàng. Hỗ trợ tìm kiếm nhanh theo tên/biệt danh, SĐT, mã KH. Quick action: Lập CT bán hàng hoặc Thu tiền trực tiếp từ danh sách.',
+      'Quản lý toàn bộ thông tin 1.564 khách hàng. Hỗ trợ tìm kiếm nhanh theo tên/biệt danh, SĐT, mã KH. Quick action: Lập Chứng từ bán hàng hoặc Thu tiền trực tiếp từ danh sách.',
     screenDescription:
-      'Dashboard trên cùng: 3 metric cards (Nợ quá hạn | Tổng nợ phải thu | Đã thanh toán 30 ngày gần đây). Bảng danh sách: Mã KH, Tên KH, Địa chỉ, Công nợ, MST/CCCD, Điện thoại. Cột Chức năng: "Thu tiền" / "Lập CT bán hàng". Toolbar: Tìm kiếm, Lọc, Thêm.',
+      'Dashboard trên cùng: 3 metric cards (Nợ quá hạn | Tổng nợ phải thu | Đã thanh toán 30 ngày gần đây). Bảng danh sách: Mã KH, Tên KH, Địa chỉ, Công nợ, MST/CCCD, Điện thoại. Cột Chức năng: "Thu tiền" / "Lập Chứng từ bán hàng". Toolbar: Tìm kiếm, Lọc, Thêm.',
     formDescription:
       'Popup modal: Radio Tổ chức/Cá nhân, MST/CCCD, Mã KH (auto), Điện thoại, Tên KH (bắt buộc), Nhóm KH, Địa chỉ, NV bán hàng. Tabs: Thông tin liên hệ | Điều khoản thanh toán | TK ngân hàng | Địa chỉ khác | Ghi chú.',
     useCases: [
@@ -143,7 +143,7 @@ export const modules: Module[] = [
       { id: 'UC02', name: 'Tìm kiếm fuzzy', description: 'Tìm theo tên/biệt danh/SĐT/mã' },
       { id: 'UC03', name: 'Thêm mới KH', description: 'Popup modal, auto generate mã' },
       { id: 'UC04', name: 'Sửa / Ẩn KH' },
-      { id: 'UC05', name: 'Quick action: Lập CT bán hàng từ KH' },
+      { id: 'UC05', name: 'Quick action: Lập Chứng từ bán hàng từ KH' },
       { id: 'UC06', name: 'Quick action: Thu tiền từ KH' },
       { id: 'UC07', name: 'Import 1.564 KH từ Excel' },
       { id: 'UC08', name: 'Export danh sách KH ra Excel' },
@@ -217,7 +217,7 @@ export const modules: Module[] = [
     price: 12000000,
     icon: 'FileText',
     description:
-      'Lập báo giá gửi KH. Có thời hạn hiệu lực. Chuyển đổi thành CT bán hàng. Trạng thái: Nháp → Đã gửi → Đã chuyển đổi / Hết hạn.',
+      'Lập báo giá gửi KH. Có thời hạn hiệu lực. Chuyển đổi thành Chứng từ bán hàng. Trạng thái: Nháp → Đã gửi → Đã chuyển đổi / Hết hạn.',
     screenDescription:
       'Bảng: Ngày báo giá, Số báo giá (BG00001), Hiệu lực đến, Khách hàng, Tổng tiền hàng, Tổng tiền CK, Tổng tiền thuế GTGT. Panel chi tiết bên dưới hiển thị dòng hàng.',
     formDescription:
@@ -227,7 +227,7 @@ export const modules: Module[] = [
     useCases: [
       { id: 'UC01', name: 'Xem danh sách báo giá' },
       { id: 'UC02', name: 'Tạo báo giá mới' },
-      { id: 'UC03', name: 'Chuyển đổi thành CT bán hàng' },
+      { id: 'UC03', name: 'Chuyển đổi thành Chứng từ bán hàng' },
       { id: 'UC04', name: 'Sửa / Hủy báo giá' },
       { id: 'UC05', name: 'In báo giá' },
     ],
@@ -248,7 +248,7 @@ export const modules: Module[] = [
     screenDescription:
       'Bảng: Ngày hạch toán, Số CT, Khách hàng, Tổng tiền, TT hóa đơn, TT thanh toán, TT xuất hàng. Panel chi tiết bên dưới hiển thị dòng hàng với giá và thuế.',
     formDescription:
-      'Radio: Chưa thu tiền / Thu tiền ngay (TM/CK). Checkbox: Kiêm phiếu xuất + Lập kèm hóa đơn. 3 Tab: Chứng từ ghi nợ | Phiếu xuất | Hóa đơn. Header: Mã KH, Tên KH, Ngày, NV bán hàng, Điều khoản thanh toán. Bảng hàng tiền đầy đủ.',
+      'Chọn: Chưa thu tiền / Thu tiền ngay (tiền mặt hoặc chuyển khoản). Tùy chọn: Kiêm phiếu xuất kho + Lập kèm hóa đơn. 3 Tab: Chứng từ ghi nợ | Phiếu xuất | Hóa đơn. Thông tin: Khách hàng, Ngày, Nhân viên bán hàng, Điều khoản thanh toán. Bảng hàng tiền đầy đủ.',
     logic: [
       'Thành tiền = Số lượng × Đơn giá',
       'Tổng tiền hàng = Σ(Thành tiền)',
@@ -265,23 +265,23 @@ export const modules: Module[] = [
       'Giảm số lượng tồn kho từng mặt hàng (nếu tích Kiêm phiếu xuất)',
       'Sinh phiếu xuất kho tương ứng (nếu tích Kiêm phiếu xuất)',
       'Sinh hóa đơn GTGT (nếu tích Lập kèm hóa đơn)',
-      'Sinh phiếu thu TM/CK (nếu chọn Thu tiền ngay)',
+      'Sinh phiếu thu tiền mặt/chuyển khoản (nếu chọn Thu tiền ngay)',
       'Cập nhật 3 trạng thái: Hóa đơn, Thanh toán, Xuất hàng',
     ],
-    statuses: ['Chưa lập HĐ / Đã lập', 'Chưa TT / Đã TT 1 phần / Đã TT', 'Chưa xuất / Đã xuất đủ'],
+    statuses: ['Chưa lập hóa đơn / Đã lập', 'Chưa thanh toán / Đã thanh toán 1 phần / Đã thanh toán đủ', 'Chưa xuất hàng / Đã xuất đủ'],
     accountingEntries: [
-      { entry: 'Doanh thu', debit: 'TK 131 (Phải thu KH)', credit: 'TK 511 (Doanh thu bán hàng)', description: 'Ghi nhận doanh thu bán hàng (chưa thu tiền)' },
-      { entry: 'Thuế GTGT', debit: 'TK 131 (Phải thu KH)', credit: 'TK 3331 (Thuế GTGT phải nộp)', description: 'Ghi nhận thuế GTGT đầu ra' },
-      { entry: 'Giá vốn', debit: 'TK 632 (Giá vốn hàng bán)', credit: 'TK 156 (Hàng hóa)', description: 'Kết chuyển giá vốn hàng xuất bán' },
-      { entry: 'Thu TM', debit: 'TK 111 (Tiền mặt)', credit: 'TK 131 (Phải thu KH)', description: 'Thu tiền mặt ngay (nếu có)' },
-      { entry: 'Thu CK', debit: 'TK 112 (Tiền gửi NH)', credit: 'TK 131 (Phải thu KH)', description: 'Thu chuyển khoản ngay (nếu có)' },
+      { entry: 'Ghi nhận doanh thu', debit: 'Phải thu khách hàng (TK 131)', credit: 'Doanh thu bán hàng (TK 511)', description: 'Ghi nhận doanh thu khi bán hàng ghi nợ' },
+      { entry: 'Ghi nhận thuế', debit: 'Phải thu khách hàng (TK 131)', credit: 'Thuế GTGT phải nộp (TK 3331)', description: 'Ghi nhận thuế giá trị gia tăng đầu ra' },
+      { entry: 'Ghi nhận giá vốn', debit: 'Giá vốn hàng bán (TK 632)', credit: 'Hàng hóa tồn kho (TK 156)', description: 'Kết chuyển giá vốn hàng xuất bán' },
+      { entry: 'Thu tiền mặt', debit: 'Tiền mặt (TK 111)', credit: 'Phải thu khách hàng (TK 131)', description: 'Thu tiền mặt ngay tại chỗ (nếu có)' },
+      { entry: 'Thu chuyển khoản', debit: 'Tiền gửi ngân hàng (TK 112)', credit: 'Phải thu khách hàng (TK 131)', description: 'Thu chuyển khoản ngay (nếu có)' },
     ],
     useCases: [
-      { id: 'UC04-01', name: 'Lập phiếu bán hàng mới', description: 'Full flow: Thêm → Chọn KH → auto load công nợ đầu → Thêm dòng hàng → search HH → auto fill giá/DVT → Nhập SL → Chọn PT thu tiền → Cất' },
+      { id: 'UC04-01', name: 'Lập phiếu bán hàng mới', description: 'Thêm → Chọn khách hàng → tự động tải công nợ đầu → Thêm dòng hàng → tìm hàng hóa → tự động điền giá/đơn vị tính → Nhập số lượng → Chọn phương thức thu tiền → Lưu' },
       { id: 'UC04-02', name: 'Lập từ Báo giá', description: 'Kế thừa data từ Báo giá M03' },
       { id: 'UC04-03', name: 'Thu tiền tại chỗ', description: 'Radio Thu tiền ngay → nhập số tiền → auto tính công nợ sau trừ → sinh phiếu thu' },
-      { id: 'UC04-04', name: 'In phiếu XKBH custom', description: 'Header DN, danh sách hàng, tổng tiền, số tiền bằng chữ, công nợ đầu/sau/cuối, lưu ý 3 ngày' },
-      { id: 'UC04-05', name: 'In phiếu 02-VT TT99/2025', description: 'Mẫu kế toán chuẩn, Nợ 632/Có 156, SL yêu cầu + thực xuất, chữ ký 5 người' },
+      { id: 'UC04-04', name: 'In phiếu Xuất kho Bán hàng (mẫu tùy chỉnh)', description: 'Tiêu đề doanh nghiệp, danh sách hàng, tổng tiền, số tiền bằng chữ, công nợ đầu/sau/cuối, lưu ý 3 ngày' },
+      { id: 'UC04-05', name: 'In phiếu Xuất kho 02-VT (Thông tư 99/2025)', description: 'Mẫu kế toán chuẩn theo Bộ Tài chính, số lượng yêu cầu + thực xuất, chữ ký 5 người' },
       { id: 'UC04-06', name: 'Tracking 3 trạng thái' },
       { id: 'UC04-07', name: 'Sửa phiếu (chưa in)', description: 'Cập nhật lại công nợ' },
       { id: 'UC04-08', name: 'Hủy phiếu (soft delete)', description: 'Hoàn lại tồn kho + giảm công nợ' },
@@ -300,18 +300,18 @@ export const modules: Module[] = [
     description:
       'Khi KH trả lại hàng đã mua. 2 phương thức: Giảm trừ công nợ hoặc Trả lại tiền mặt.',
     screenDescription:
-      'Bảng: Ngày, Số CT (BTL00001), Khách hàng, Tổng tiền, Phương thức lập HĐ, TT nhập hàng. Panel chi tiết hiển thị dòng hàng kèm số CT bán hàng gốc.',
+      'Bảng: Ngày, Số chứng từ (BTL00001), Khách hàng, Tổng tiền, Phương thức lập hóa đơn, Trạng thái nhập hàng. Panel chi tiết hiển thị dòng hàng kèm số chứng từ bán hàng gốc.',
     formDescription:
-      'Radio: Giảm trừ công nợ / Trả lại tiền mặt. Checkbox: Kiêm phiếu nhập kho. Input search chứng từ bán hàng gốc. Bảng hàng tương tự CT bán hàng.',
+      'Radio: Giảm trừ công nợ / Trả lại tiền mặt. Checkbox: Kiêm phiếu nhập kho. Input search chứng từ bán hàng gốc. Bảng hàng tương tự Chứng từ bán hàng.',
     sideEffects: [
       'Giảm công nợ KH (nếu Giảm trừ) HOẶC sinh phiếu chi (nếu Trả lại tiền mặt)',
       'Tăng tồn kho (nếu tích Kiêm phiếu nhập kho)',
       'Cập nhật trạng thái nhập hàng',
     ],
     accountingEntries: [
-      { entry: 'Giảm doanh thu', debit: 'TK 5212 (Hàng bán bị trả lại)', credit: 'TK 131 (Phải thu KH)', description: 'Giảm doanh thu do trả hàng (TT200). TT133: Nợ TK 511' },
-      { entry: 'Hoàn thuế', debit: 'TK 3331 (Thuế GTGT)', credit: 'TK 131 (Phải thu KH)', description: 'Hoàn thuế GTGT đầu ra đã ghi nhận' },
-      { entry: 'Hoàn giá vốn', debit: 'TK 156 (Hàng hóa)', credit: 'TK 632 (Giá vốn)', description: 'Nhập lại hàng tồn kho, giảm giá vốn' },
+      { entry: 'Giảm doanh thu', debit: 'Hàng bán bị trả lại (TK 5212)', credit: 'Phải thu khách hàng (TK 131)', description: 'Giảm doanh thu do khách trả hàng' },
+      { entry: 'Hoàn thuế', debit: 'Thuế GTGT phải nộp (TK 3331)', credit: 'Phải thu khách hàng (TK 131)', description: 'Hoàn lại thuế giá trị gia tăng đầu ra' },
+      { entry: 'Hoàn giá vốn', debit: 'Hàng hóa tồn kho (TK 156)', credit: 'Giá vốn hàng bán (TK 632)', description: 'Nhập lại hàng vào kho, giảm giá vốn' },
     ],
     comparisonTable: [
       { label: 'Phương thức', sell: 'Chưa thu / Thu ngay', return: 'Giảm trừ nợ / Hoàn tiền' },
@@ -321,7 +321,7 @@ export const modules: Module[] = [
     ],
     useCases: [
       { id: 'UC01', name: 'Lập phiếu trả hàng' },
-      { id: 'UC02', name: 'Link đến CT bán hàng gốc' },
+      { id: 'UC02', name: 'Link đến Chứng từ bán hàng gốc' },
       { id: 'UC03', name: 'Chọn phương thức xử lý' },
       { id: 'UC04', name: 'Hoàn tồn kho + giảm nợ' },
     ],
@@ -340,11 +340,11 @@ export const modules: Module[] = [
     description:
       'Dashboard tổng quan công nợ. Phân tích aging (tuổi nợ). Thu tiền nhanh. Đối trừ chứng từ.',
     screenDescription:
-      'Dashboard 3 metric cards: Nợ quá hạn | Tổng nợ phải thu | Đã thanh toán 30 ngày. Bảng KH có nợ. Panel 2 tab: Phân tích nợ theo HĐ (3 bảng: trước hạn, quá hạn, tình trạng) | Chi tiết.',
+      'Dashboard 3 thẻ chỉ số: Nợ quá hạn | Tổng nợ phải thu | Đã thanh toán 30 ngày. Bảng khách hàng có nợ. Panel 2 tab: Phân tích nợ theo hóa đơn (3 bảng: trước hạn, quá hạn, tình trạng) | Chi tiết.',
     logic: [
       'Công nợ cuối kỳ = Nợ đầu kỳ + Bán hàng - Thanh toán - Trả hàng ± Bù trừ',
       '(+) Bán hàng ghi nợ → TĂNG công nợ',
-      '(-) Thanh toán TM/CK → GIẢM công nợ',
+      '(-) Thanh toán tiền mặt/chuyển khoản → GIẢM công nợ',
       '(-) Trả lại hàng → GIẢM công nợ',
       '(±) Bù trừ công nợ → ĐIỀU CHỈNH',
       'VD: Sơn 92: 82.158.000 + 18.888.900 - 0 - 0 = 101.046.900đ',
@@ -352,8 +352,8 @@ export const modules: Module[] = [
     useCases: [
       { id: 'UC06-01', name: 'Xem dashboard 3 metrics + bảng KH có nợ' },
       { id: 'UC06-02', name: 'Xem phân tích aging', description: 'Click 1 KH → tab phân tích: 3 bảng trước hạn, quá hạn, tình trạng' },
-      { id: 'UC06-03', name: 'Thu tiền nhanh', description: 'Click "Thu tiền" → nhập số tiền, hình thức TM/CK → Lưu → giảm nợ' },
-      { id: 'UC06-04', name: 'Đối trừ chứng từ', description: 'Match CT bán hàng với phiếu thu theo từng hóa đơn' },
+      { id: 'UC06-03', name: 'Thu tiền nhanh', description: 'Nhấn "Thu tiền" → nhập số tiền, chọn tiền mặt hoặc chuyển khoản → Lưu → giảm nợ khách hàng' },
+      { id: 'UC06-04', name: 'Đối trừ chứng từ', description: 'Khớp Chứng từ bán hàng với phiếu thu theo từng hóa đơn' },
       { id: 'UC06-05', name: 'Sổ chi tiết công nợ', description: 'Xem tất cả giao dịch 1 KH: bán hàng (+), thu tiền (-), trả hàng (-), bù trừ (±)' },
       { id: 'UC06-06', name: 'In biên bản đối chiếu công nợ', description: 'Gửi KH ký xác nhận' },
     ],
@@ -391,7 +391,7 @@ export const modules: Module[] = [
     price: 8000000,
     icon: 'Tag',
     description:
-      'Thiết lập chính sách giá bán, chiết khấu cho từng nhóm KH, từng nhóm HH, trong khoảng thời gian nhất định. Auto apply khi lập CT bán hàng.',
+      'Thiết lập chính sách giá bán, chiết khấu cho từng nhóm khách hàng, từng nhóm hàng hóa, trong khoảng thời gian nhất định. Tự động áp dụng khi lập Chứng từ bán hàng.',
     logic: [
       'Giá bán mới = Giá gốc × (100 + %)/100',
       'Hoặc: Giá bán mới = Giá gốc + Số tiền',
@@ -403,7 +403,7 @@ export const modules: Module[] = [
       { id: 'UC01', name: 'Tạo chính sách giá' },
       { id: 'UC02', name: 'Thiết lập chiết khấu theo nhóm KH' },
       { id: 'UC03', name: 'Tính giá bán hàng loạt' },
-      { id: 'UC04', name: 'Auto apply khi lập CT bán hàng' },
+      { id: 'UC04', name: 'Tự động áp dụng khi lập Chứng từ bán hàng' },
     ],
   },
 ]
@@ -419,10 +419,10 @@ export const supplementary: Module[] = [
     totalEffort: 8,
     price: 12000000,
     icon: 'Printer',
-    description: 'Phiếu XKBH Custom (header DN, công nợ, lưu ý 3 ngày) + Phiếu XK 02-VT theo TT99/2025 (mẫu kế toán chuẩn, chữ ký 5 người).',
+    description: 'Phiếu Xuất kho Bán hàng tùy chỉnh (tiêu đề doanh nghiệp, công nợ, lưu ý 3 ngày) + Phiếu Xuất kho 02-VT theo Thông tư 99/2025 (mẫu kế toán chuẩn Bộ Tài chính, chữ ký 5 người).',
     useCases: [
-      { id: 'UC01', name: 'In phiếu XKBH Custom' },
-      { id: 'UC02', name: 'In phiếu 02-VT TT99/2025' },
+      { id: 'UC01', name: 'In phiếu Xuất kho Bán hàng (mẫu tùy chỉnh)' },
+      { id: 'UC02', name: 'In phiếu Xuất kho 02-VT (Thông tư 99/2025)' },
     ],
   },
   {
@@ -481,7 +481,7 @@ export const supplementary: Module[] = [
 export const businessRules = [
   { id: 'BR01', module: 'M04', rule: 'Công nợ cuối = Nợ đầu + BH - TT - TL ± BT', description: 'Công thức tính công nợ realtime, hiển thị trên phiếu in' },
   { id: 'BR02', module: 'M04', rule: 'Kiêm phiếu xuất → giảm tồn kho', description: 'Tích checkbox = auto giảm SL tồn' },
-  { id: 'BR03', module: 'M04', rule: 'Thu tiền ngay → sinh phiếu thu', description: 'Chọn Thu tiền ngay = auto sinh phiếu thu TM/CK' },
+  { id: 'BR03', module: 'M04', rule: 'Thu tiền ngay → sinh phiếu thu', description: 'Chọn Thu tiền ngay = tự động sinh phiếu thu (tiền mặt hoặc chuyển khoản)' },
   { id: 'BR04', module: 'M05', rule: 'Trả hàng → tăng tồn + giảm nợ', description: 'Kiêm phiếu nhập = tăng tồn; Giảm trừ = giảm nợ' },
   { id: 'BR05', module: 'M04', rule: 'Số CT auto increment', description: 'BH00001, BH00002... không cho sửa' },
   { id: 'BR06', module: 'M02', rule: 'Cảnh báo hết hàng', description: 'Tồn kho <= tồn tối thiểu → badge "Sắp hết"' },

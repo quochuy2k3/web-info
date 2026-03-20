@@ -236,10 +236,11 @@ export function ModuleDetail({ module }: { module: Module }) {
           {module.accountingEntries && module.accountingEntries.length > 0 && (
             <ScrollReveal>
               <div className="glow-card p-7">
-                <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
+                <h2 className="text-xl font-semibold text-white mb-2 flex items-center gap-3">
                   <BookOpen size={20} className="text-cyan-400" />
                   Bút toán Hạch toán
                 </h2>
+                <p className="text-xs text-gray-500 mb-5">Ghi Nợ = tài khoản tăng tài sản/chi phí. Ghi Có = tài khoản tăng nguồn vốn/doanh thu. Mã TK (Tài khoản) theo hệ thống kế toán Việt Nam.</p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
