@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Calendar, Clock } from 'lucide-react'
+import { User, Phone, MapPin, Calendar, Clock } from 'lucide-react'
 import { projectInfo } from '@/data/project-data'
 import { sectionIds } from '@/lib/utils'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
@@ -43,7 +43,7 @@ export function Footer() {
               <span className="text-sm">{projectInfo.provider.location}</span>
             </div>
             <div className="flex items-center gap-3 text-gray-400">
-              <Mail size={16} className="text-indigo-400" />
+              <User size={16} className="text-indigo-400" />
               <span className="text-sm">{projectInfo.provider.contact}</span>
             </div>
             <div className="flex items-center gap-3 text-gray-400">

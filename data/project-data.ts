@@ -588,7 +588,7 @@ export const warranty = {
 export const pricingSummary = {
   subtotal: 169000000,
   pmOverhead: 6000000,
-  pmOverheadPercent: 4,
+  pmOverheadPercent: 3.5,
   total: 175000000,
   totalWords: 'Một trăm bảy mươi lăm triệu đồng',
   rate: 1400000,

@@ -31,7 +31,7 @@ const layers = [
   {
     label: 'Data',
     items: [
-      { name: 'MongoDB Atlas', sub: '8 Collections • Flexible Schema', color: 'from-emerald-500 to-emerald-600' },
+      { name: 'MongoDB Atlas', sub: '9 Collections • Flexible Schema', color: 'from-emerald-500 to-emerald-600' },
       { name: 'Cloud Storage', sub: 'Files & Backups', color: 'from-emerald-500 to-teal-600' },
     ],
   },

@@ -97,10 +97,10 @@ export function ModulesGrid() {
         {/* Summary stats */}
         <div className="flex flex-wrap justify-center gap-6 sm:gap-10 mb-14">
           {[
-            { label: 'Modules', value: 8 },
-            { label: 'Use Cases', value: 42 },
+            { label: 'Modules', value: modules.length },
+            { label: 'Use Cases', value: modules.reduce((sum, m) => sum + m.useCases.length, 0) },
             { label: 'Business Rules', value: 11 },
-            { label: 'Data Fields', value: 27 },
+            { label: 'Data Fields', value: modules.reduce((sum, m) => sum + (m.dataFields?.length || 0), 0) },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <AnimatedCounter target={stat.value} className="text-2xl font-bold text-white" />
