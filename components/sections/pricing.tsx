@@ -17,7 +17,7 @@ export function Pricing() {
         <SectionHeader
           label="Báo giá"
           title="Chi tiết Báo giá"
-          description={`Rate: ${formatCurrency(pricingSummary.rate)}/man-day (~$${pricingSummary.rateUSD}/giờ) • Phương pháp: Effort × Rate + PM overhead ${pricingSummary.pmOverheadPercent}%`}
+          description={`Rate: ~${formatCurrency(pricingSummary.rate)}/man-day (~$${pricingSummary.rateUSD}/giờ) • Giá làm tròn theo tier độ phức tạp module`}
         />
 
         {/* Grand total highlight */}
