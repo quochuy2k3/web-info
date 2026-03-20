@@ -3,293 +3,306 @@
 export const moduleDiagrams: Record<string, { title: string; chart: string }[]> = {
   m03: [
     {
-      title: 'Quy trình chuyển đổi Báo giá',
+      title: 'Quy trinh chuyen doi Bao gia',
       chart: `flowchart LR
-  A["Lập Báo giá\\n(BG00001)"] --> B{"KH duyệt?"}
-  B -->|Đồng ý| C["Chuyển đổi\\n→ CT Bán hàng"]
-  B -->|Từ chối| D["Hết hạn / Hủy"]
-  C --> E["Kế thừa KH\\n+ dòng hàng"]
-  E --> F["CT Bán hàng\\n(BH00001)"]`,
+  A["Lap Bao gia\n BG00001"] --> B{"KH duyet?"}
+  B -->|Dong y| C["Chuyen doi\nthanh CT Ban hang"]
+  C --> E["Ke thua KH\n+ dong hang"]
+  E --> F["CT Ban hang\n BH00001"]
+  B -->|Tu choi| D["Het han / Huy"]`,
     },
     {
-      title: 'Trạng thái Báo giá',
+      title: 'Trang thai Bao gia',
       chart: `stateDiagram-v2
-  [*] --> Nháp
-  Nháp --> ĐãGửi : Gửi KH
-  ĐãGửi --> ĐãChuyểnĐổi : KH duyệt
-  ĐãGửi --> HếtHạn : Quá hạn hiệu lực
-  ĐãChuyểnĐổi --> [*]
-  HếtHạn --> [*]`,
+  [*] --> Nhap
+  Nhap --> DaGui : Gui KH
+  DaGui --> DaChuyenDoi : KH duyet
+  DaGui --> HetHan : Qua han hieu luc
+  DaChuyenDoi --> [*]
+  HetHan --> [*]
+
+  Nhap : Nhap (Draft)
+  DaGui : Da gui KH
+  DaChuyenDoi : Da chuyen doi
+  HetHan : Het han`,
     },
   ],
 
   m04: [
     {
-      title: 'Quy trình Bán hàng (End-to-End)',
+      title: 'Quy trinh Ban hang (End-to-End)',
       chart: `flowchart TD
-  A["Lập CT Bán hàng"] --> B["Chọn Khách hàng"]
-  B --> C["Auto load Công nợ đầu kỳ"]
-  C --> D["Thêm dòng hàng\\n(search HH → auto fill giá/ĐVT)"]
-  D --> E{"Phương thức\\nthanh toán?"}
-  E -->|"Chưa thu tiền"| F["Ghi nợ TK 131"]
-  E -->|"Thu tiền ngay"| G{"Hình thức?"}
-  G -->|"Tiền mặt"| H["Nợ TK 111 / Có TK 511"]
-  G -->|"Chuyển khoản"| I["Nợ TK 112 / Có TK 511"]
-  F --> J{"Kiêm phiếu\\nxuất kho?"}
+  A["Lap CT Ban hang"] --> B["Chon Khach hang"]
+  B --> C["Auto load Cong no dau ky"]
+  C --> D["Them dong hang\nsearch HH, auto fill gia"]
+  D --> E{"Phuong thuc\nthanh toan?"}
+  E -->|"Chua thu tien"| F["Ghi no TK 131"]
+  E -->|"Thu tien ngay"| G{"Hinh thuc?"}
+  G -->|"Tien mat"| H["No TK 111 / Co TK 511"]
+  G -->|"Chuyen khoan"| I["No TK 112 / Co TK 511"]
+  F --> J{"Kiem phieu\nxuat kho?"}
   H --> J
   I --> J
-  J -->|Có| K["Auto sinh Phiếu xuất kho\\n(Nợ 632 / Có 156)\\nGiảm tồn kho"]
-  J -->|Không| L["Lập phiếu xuất sau"]
-  K --> M{"Lập kèm\\nhóa đơn?"}
+  J -->|Co| K["Auto sinh Phieu xuat kho\nNo 632 / Co 156\nGiam ton kho"]
+  J -->|Khong| L["Lap phieu xuat sau"]
+  K --> M{"Lap kem\nhoa don?"}
   L --> M
-  M -->|Có| N["Auto sinh HĐ GTGT\\n(qua meInvoice)"]
-  M -->|Không| O["Lập HĐ sau"]
-  N --> P["Cập nhật 3 trạng thái\\n+ Công nợ cuối kỳ"]
+  M -->|Co| N["Auto sinh HD GTGT"]
+  M -->|Khong| O["Lap HD sau"]
+  N --> P["Cap nhat 3 trang thai\n+ Cong no cuoi ky"]
   O --> P`,
     },
     {
-      title: 'Bút toán Hạch toán (Bán hàng trong nước)',
+      title: 'But toan Hach toan - Ban hang trong nuoc',
       chart: `flowchart LR
-  subgraph "Ghi nhận Doanh thu"
-    A["Nợ TK 131\\n(Phải thu KH)"] --> B["Có TK 511\\n(Doanh thu)"]
-    A --> C["Có TK 3331\\n(Thuế GTGT)"]
+  subgraph rev ["Ghi nhan Doanh thu"]
+    A["No TK 131\nPhai thu KH"] --> B["Co TK 511\nDoanh thu"]
+    A --> C["Co TK 3331\nThue GTGT"]
   end
-  subgraph "Ghi nhận Giá vốn"
-    D["Nợ TK 632\\n(Giá vốn hàng bán)"] --> E["Có TK 156\\n(Hàng hóa)"]
+  subgraph cogs ["Ghi nhan Gia von"]
+    D["No TK 632\nGia von hang ban"] --> E["Co TK 156\nHang hoa"]
   end
-  subgraph "Thu tiền ngay (nếu có)"
-    F["Nợ TK 111/112\\n(TM / CK)"] --> G["Có TK 131\\n(Giảm công nợ)"]
+  subgraph cash ["Thu tien ngay - neu co"]
+    F["No TK 111/112\nTM hoac CK"] --> G["Co TK 131\nGiam cong no"]
   end`,
     },
     {
-      title: 'Sequence: Lập phiếu Bán hàng',
+      title: 'Sequence: Lap phieu Ban hang',
       chart: `sequenceDiagram
-  actor NV as NV Bán hàng
-  participant UI as Giao diện
+  actor NV as NV Ban hang
+  participant UI as Giao dien
   participant API as Backend API
   participant DB as MongoDB
 
-  NV->>UI: Click "Thêm CT Bán hàng"
-  UI->>API: GET /customers/{id}
-  API->>DB: Query customer + công nợ
-  DB-->>API: Customer data + nợ đầu kỳ
-  API-->>UI: Auto fill KH + công nợ đầu
+  NV->>UI: Click Them CT Ban hang
+  UI->>API: GET /customers/id
+  API->>DB: Query customer + cong no
+  DB-->>API: Customer data + no dau ky
+  API-->>UI: Auto fill KH + cong no dau
 
-  NV->>UI: Search & chọn Hàng hóa
+  NV->>UI: Search va chon Hang hoa
   UI->>API: GET /products/search
-  API-->>UI: Auto fill giá, ĐVT
+  API-->>UI: Auto fill gia, DVT
 
-  NV->>UI: Nhập SL, chọn PT thanh toán
-  UI->>UI: Auto tính: Thành tiền, Thuế, Tổng TT
+  NV->>UI: Nhap SL, chon PT thanh toan
+  UI->>UI: Auto tinh Thanh tien, Thue, Tong TT
 
-  NV->>UI: Click "Cất"
+  NV->>UI: Click Luu
   UI->>API: POST /sale-vouchers
   API->>DB: Insert sale_voucher
-  API->>DB: Update customer.cong_no (+)
-  API->>DB: Update product.so_luong_ton (-)
-  API-->>UI: Thành công + Số CT
+  API->>DB: Update customer.cong_no +
+  API->>DB: Update product.so_luong_ton -
+  API-->>UI: Thanh cong + So CT
 
-  NV->>UI: Click "In phiếu"
-  UI->>API: GET /print/xkbh/{id}
-  API-->>UI: PDF phiếu XKBH`,
+  NV->>UI: Click In phieu
+  UI->>API: GET /print/xkbh/id
+  API-->>UI: PDF phieu XKBH`,
     },
     {
-      title: 'Trạng thái Chứng từ Bán hàng',
+      title: 'Trang thai Chung tu Ban hang',
       chart: `stateDiagram-v2
-  state "TT Hóa đơn" as hd {
-    [*] --> ChưaLậpHĐ
-    ChưaLậpHĐ --> ĐãLậpHĐ : Phát hành HĐ
+  state "TT Hoa don" as hd {
+    [*] --> ChuaLapHD
+    ChuaLapHD --> DaLapHD : Phat hanh HD
+    ChuaLapHD : Chua lap hoa don
+    DaLapHD : Da lap hoa don
   }
-  state "TT Thanh toán" as tt {
-    [*] --> ChưaTT
-    ChưaTT --> ĐãTT1Phần : Thu 1 phần
-    ĐãTT1Phần --> ĐãTT : Thu đủ
-    ChưaTT --> ĐãTT : Thu đủ ngay
+  state "TT Thanh toan" as tt {
+    [*] --> ChuaTT
+    ChuaTT --> DaTT1Phan : Thu 1 phan
+    DaTT1Phan --> DaTTDu : Thu du
+    ChuaTT --> DaTTDu : Thu du ngay
+    ChuaTT : Chua thanh toan
+    DaTT1Phan : Da TT 1 phan
+    DaTTDu : Da thanh toan
   }
-  state "TT Xuất hàng" as xh {
-    [*] --> ChưaXuất
-    ChưaXuất --> ĐãXuấtĐủ : Xuất kho
+  state "TT Xuat hang" as xh {
+    [*] --> ChuaXuat
+    ChuaXuat --> DaXuatDu : Xuat kho
+    ChuaXuat : Chua xuat
+    DaXuatDu : Da xuat du
   }`,
     },
   ],
 
   m05: [
     {
-      title: 'Quy trình Trả lại hàng bán',
+      title: 'Quy trinh Tra lai hang ban',
       chart: `flowchart TD
-  A["KH yêu cầu\\ntrả lại hàng"] --> B["Tìm CT bán hàng gốc\\n(BH00xxx)"]
-  B --> C{"Phương thức\\nxử lý?"}
-  C -->|"Giảm trừ công nợ"| D["Giảm nợ KH\\n(Nợ 521/Có 131)"]
-  C -->|"Trả lại tiền mặt"| E["Hoàn tiền\\n(Nợ 521/Có 111)"]
-  D --> F{"Kiêm phiếu\\nnhập kho?"}
+  A["KH yeu cau\ntra lai hang"] --> B["Tim CT ban hang goc\nBH00xxx"]
+  B --> C{"Phuong thuc\nxu ly?"}
+  C -->|"Giam tru cong no"| D["Giam no KH\nNo 521 / Co 131"]
+  C -->|"Tra lai tien mat"| E["Hoan tien\nNo 521 / Co 111"]
+  D --> F{"Kiem phieu\nnhap kho?"}
   E --> F
-  F -->|Có| G["Auto sinh\\nPhiếu nhập kho\\n(Nợ 156/Có 632)\\nTăng tồn kho"]
-  F -->|Không| H["Nhập kho thủ công"]
-  G --> I["Hoàn tất\\n+ Cập nhật trạng thái"]
+  F -->|Co| G["Auto sinh\nPhieu nhap kho\nNo 156 / Co 632\nTang ton kho"]
+  F -->|Khong| H["Nhap kho thu cong"]
+  G --> I["Hoan tat\n+ Cap nhat trang thai"]
   H --> I`,
     },
     {
-      title: 'Bút toán Hạch toán (Trả lại hàng — TT200)',
+      title: 'But toan Hach toan - Tra lai hang TT200',
       chart: `flowchart LR
-  subgraph "Giảm Doanh thu"
-    A["Nợ TK 5212\\n(Hàng bán bị trả lại)"] --> B["Có TK 131\\n(Giảm phải thu)"]
+  subgraph dt ["Giam Doanh thu"]
+    A["No TK 5212\nHang ban bi tra lai"] --> B["Co TK 131\nGiam phai thu"]
   end
-  subgraph "Hoàn Thuế GTGT"
-    C["Nợ TK 3331\\n(Giảm thuế phải nộp)"] --> D["Có TK 131\\n(Giảm phải thu)"]
+  subgraph vat ["Hoan Thue GTGT"]
+    C["No TK 3331\nGiam thue phai nop"] --> D["Co TK 131\nGiam phai thu"]
   end
-  subgraph "Hoàn Giá vốn"
-    E["Nợ TK 156\\n(Tăng hàng tồn kho)"] --> F["Có TK 632\\n(Giảm giá vốn)"]
+  subgraph inv ["Hoan Gia von"]
+    E["No TK 156\nTang hang ton kho"] --> F["Co TK 632\nGiam gia von"]
   end`,
     },
   ],
 
   m06: [
     {
-      title: '4 Nguồn tác động Công nợ',
+      title: '4 Nguon tac dong Cong no',
       chart: `flowchart TD
-  CN["Công nợ\\nđầu kỳ"] --> CALC["Công nợ cuối kỳ\\n= Đầu kỳ + BH - TT - TL ± BT"]
-  BH["+) Bán hàng ghi nợ\\n(M04)"] -->|TĂNG| CALC
-  TT["-) Thanh toán TM/CK\\n(Thu tiền)"] -->|GIẢM| CALC
-  TL["-) Trả lại hàng\\n(M05)"] -->|GIẢM| CALC
-  BT["±) Bù trừ công nợ\\n(M07)"] -->|ĐIỀU CHỈNH| CALC
+  CN["Cong no\ndau ky"] --> CALC["Cong no cuoi ky\n= Dau ky + BH - TT - TL +/- BT"]
+  BH["+  Ban hang ghi no\nM04"] -->|TANG| CALC
+  TT["-  Thanh toan TM/CK\nThu tien"] -->|GIAM| CALC
+  TL["-  Tra lai hang\nM05"] -->|GIAM| CALC
+  BT["+/-  Bu tru cong no\nM07"] -->|DIEU CHINH| CALC
 
-  CALC --> VD["VD: Sơn 92\\n82.158.000 + 18.888.900\\n- 0 - 0 = 101.046.900đ"]`,
+  CALC --> VD["VD: Son 92\n82.158.000 + 18.888.900\n- 0 - 0 = 101.046.900d"]`,
     },
     {
-      title: 'Phân tích Tuổi nợ (Aging)',
+      title: 'Phan tich Tuoi no - Aging',
       chart: `flowchart LR
-  subgraph "Trước hạn"
-    A1["0-30 ngày"]
-    A2["31-60 ngày"]
-    A3["61-90 ngày"]
-    A4["91-120 ngày"]
-    A5["> 120 ngày"]
+  subgraph before ["Truoc han"]
+    A1["0-30 ngay"]
+    A2["31-60 ngay"]
+    A3["61-90 ngay"]
+    A4["91-120 ngay"]
+    A5["Tren 120 ngay"]
   end
-  subgraph "Quá hạn"
-    B1["1-30 ngày"]
-    B2["31-60 ngày"]
-    B3["61-90 ngày"]
-    B4["91-120 ngày"]
-    B5["> 120 ngày"]
+  subgraph after ["Qua han"]
+    B1["1-30 ngay"]
+    B2["31-60 ngay"]
+    B3["61-90 ngay"]
+    B4["91-120 ngay"]
+    B5["Tren 120 ngay"]
   end
-  subgraph "Tình trạng"
-    C1["Nợ bình thường"]
-    C2["Nợ khó đòi"]
-    C3["Nợ không thể đòi"]
+  subgraph status ["Tinh trang"]
+    C1["No binh thuong"]
+    C2["No kho doi"]
+    C3["No khong the doi"]
   end`,
     },
     {
-      title: 'Quy trình Đối chiếu Công nợ',
+      title: 'Quy trinh Doi chieu Cong no',
       chart: `sequenceDiagram
-  actor KT as Kế toán
-  participant SYS as Hệ thống
-  participant KH as Khách hàng
+  actor KT as Ke toan
+  participant SYS as He thong
+  participant KH as Khach hang
 
-  KT->>SYS: Xem Báo cáo công nợ KH
-  SYS-->>KT: Biên bản đối chiếu\\n(Số dư đầu kỳ, PS tăng/giảm, Số dư cuối kỳ)
-  KT->>KT: In biên bản đối chiếu
-  KT->>KH: Gửi biên bản xác nhận
-  KH-->>KT: Ký xác nhận / Phản hồi chênh lệch
-  alt Có chênh lệch
-    KT->>SYS: Chỉnh sửa chứng từ
-    SYS-->>KT: Cập nhật số liệu
+  KT->>SYS: Xem Bao cao cong no KH
+  SYS-->>KT: Bien ban doi chieu
+  Note over KT,SYS: So du dau ky, PS tang/giam, So du cuoi ky
+  KT->>KT: In bien ban doi chieu
+  KT->>KH: Gui bien ban xac nhan
+  KH-->>KT: Ky xac nhan hoac phan hoi chenh lech
+  alt Co chenh lech
+    KT->>SYS: Chinh sua chung tu
+    SYS-->>KT: Cap nhat so lieu
   end
-  KT->>KT: Lưu biên bản có chữ ký`,
+  KT->>KT: Luu bien ban co chu ky`,
     },
   ],
 
   m07: [
     {
-      title: 'Quy trình Bù trừ Công nợ',
+      title: 'Quy trinh Bu tru Cong no',
       chart: `flowchart TD
-  A["Chọn Đối tượng\\n(vừa KH vừa NCC)"] --> B["Chọn TK phải thu (131)\\n+ TK phải trả (331)"]
-  B --> C["Chọn Ngày bù trừ"]
-  C --> D["Click 'Lấy dữ liệu'"]
-  D --> E["Hệ thống load\\n2 bảng chứng từ"]
-  E --> F["Bảng 1: CT Phải thu\\n(HĐ bán hàng chưa thu)"]
-  E --> G["Bảng 2: CT Phải trả\\n(HĐ mua hàng chưa trả)"]
-  F --> H["Tick chọn CT\\ncần bù trừ"]
+  A["Chon Doi tuong\nvua KH vua NCC"] --> B["Chon TK phai thu 131\n+ TK phai tra 331"]
+  B --> C["Chon Ngay bu tru"]
+  C --> D["Click Lay du lieu"]
+  D --> E["He thong load\n2 bang chung tu"]
+  E --> F["Bang 1: CT Phai thu\nHD ban hang chua thu"]
+  E --> G["Bang 2: CT Phai tra\nHD mua hang chua tra"]
+  F --> H["Tick chon CT\ncan bu tru"]
   G --> H
-  H --> I["Auto tính\\nSố tiền bù trừ"]
-  I --> J["Click 'Bù trừ'"]
-  J --> K["Sinh chứng từ bù trừ\\nNợ TK 331 / Có TK 131"]`,
+  H --> I["Auto tinh\nSo tien bu tru"]
+  I --> J["Click Bu tru"]
+  J --> K["Sinh chung tu bu tru\nNo TK 331 / Co TK 131"]`,
     },
   ],
 
   m08: [
     {
-      title: 'Quy trình Thiết lập Chính sách giá',
+      title: 'Quy trinh Thiet lap Chinh sach gia',
       chart: `flowchart TD
-  A["Tạo Chính sách giá mới"] --> B["Khai báo thông tin\\n(Tên, Từ ngày → Đến ngày)"]
-  B --> C["Chọn Nhóm KH\\náp dụng"]
-  C --> D["Chọn Sản phẩm\\n(từng SP / tất cả)"]
-  D --> E{"Phương pháp\\ntính giá?"}
-  E -->|"% tăng/giảm"| F["Giá mới = Giá gốc\\n× (100 + %)/100"]
-  E -->|"Số tiền +/-"| G["Giá mới = Giá gốc\\n+ Số tiền"]
-  F --> H["Thiết lập Chiết khấu\\n(% hoặc số tiền)"]
+  A["Tao Chinh sach gia moi"] --> B["Khai bao thong tin\nTen, Tu ngay, Den ngay"]
+  B --> C["Chon Nhom KH\nap dung"]
+  C --> D["Chon San pham\ntung SP hoac tat ca"]
+  D --> E{"Phuong phap\ntinh gia?"}
+  E -->|"Phan tram tang/giam"| F["Gia moi = Gia goc\nx 100+pct / 100"]
+  E -->|"So tien +/-"| G["Gia moi = Gia goc\n+ So tien"]
+  F --> H["Thiet lap Chiet khau\npct hoac so tien"]
   G --> H
-  H --> I["Lưu chính sách"]
-  I --> J["Auto apply khi\\nlập CT Bán hàng"]`,
+  H --> I["Luu chinh sach"]
+  I --> J["Auto apply khi\nlap CT Ban hang"]`,
     },
     {
-      title: 'Cách áp dụng Chính sách giá',
+      title: 'Cach ap dung Chinh sach gia',
       chart: `sequenceDiagram
-  actor NV as NV Bán hàng
-  participant UI as CT Bán hàng
-  participant SYS as Hệ thống
+  actor NV as NV Ban hang
+  participant UI as CT Ban hang
+  participant SYS as He thong
   participant DB as Database
 
-  NV->>UI: Chọn Khách hàng
-  UI->>SYS: Lấy Nhóm KH
-  NV->>UI: Chọn Hàng hóa
-  SYS->>DB: Query chính sách giá\\n(Nhóm KH + Mã HH + Ngày hiện tại)
-  DB-->>SYS: Chính sách đang áp dụng
-  SYS-->>UI: Auto fill Đơn giá\\n+ Chiết khấu
-  NV->>UI: Nhập Số lượng
-  UI->>UI: Auto tính Thành tiền`,
+  NV->>UI: Chon Khach hang
+  UI->>SYS: Lay Nhom KH
+  NV->>UI: Chon Hang hoa
+  SYS->>DB: Query chinh sach gia
+  Note over SYS,DB: Nhom KH + Ma HH + Ngay hien tai
+  DB-->>SYS: Chinh sach dang ap dung
+  SYS-->>UI: Auto fill Don gia + Chiet khau
+  NV->>UI: Nhap So luong
+  UI->>UI: Auto tinh Thanh tien`,
     },
   ],
 
-  // Overall system architecture flow
   system: [
     {
-      title: 'Luồng nghiệp vụ tổng quan hệ thống',
+      title: 'Luong nghiep vu tong quan he thong',
       chart: `flowchart TD
-  subgraph "Master Data"
-    KH["M01\\nKhách hàng\\n(1.564)"]
-    HH["M02\\nHàng hóa\\n(3.734)"]
-    CS["M08\\nChính sách giá"]
+  subgraph master ["Master Data"]
+    KH["M01\nKhach hang\n1.564 records"]
+    HH["M02\nHang hoa\n3.734 records"]
+    CS["M08\nChinh sach gia"]
   end
 
-  subgraph "Nghiệp vụ chính"
-    BG["M03\\nBáo giá"]
-    BH["M04\\nBán hàng\\n⭐ CORE"]
-    TL["M05\\nTrả lại hàng"]
+  subgraph core ["Nghiep vu chinh"]
+    BG["M03\nBao gia"]
+    BH["M04\nBan hang\nCORE"]
+    TL["M05\nTra lai hang"]
   end
 
-  subgraph "Công nợ & Thanh toán"
-    CN["M06\\nCông nợ KH\\n⭐ CORE"]
-    BT["M07\\nBù trừ\\nCông nợ"]
+  subgraph debt ["Cong no va Thanh toan"]
+    CN["M06\nCong no KH\nCORE"]
+    BuTru["M07\nBu tru\nCong no"]
   end
 
-  subgraph "Bổ trợ"
-    IN["P01\\nIn phiếu"]
-    AU["P02\\nAuth"]
+  subgraph support ["Bo tro"]
+    IN["P01\nIn phieu"]
+    AU["P02\nAuth"]
   end
 
   KH --> BG
   KH --> BH
   HH --> BG
   HH --> BH
-  CS -->|Auto fill giá| BH
-  BG -->|Chuyển đổi| BH
-  BH -->|+) Tăng nợ| CN
-  BH -->|Giảm tồn kho| HH
-  TL -->|-) Giảm nợ| CN
-  TL -->|Tăng tồn kho| HH
-  BT -->|±) Điều chỉnh| CN
+  CS -->|Auto fill gia| BH
+  BG -->|Chuyen doi| BH
+  BH -->|Tang no| CN
+  BH -->|Giam ton kho| HH
+  TL -->|Giam no| CN
+  TL -->|Tang ton kho| HH
+  BuTru -->|Dieu chinh| CN
   BH --> IN
-  CN -->|Thu tiền| CN`,
+  CN -->|Thu tien| CN`,
     },
   ],
 }
