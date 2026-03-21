@@ -132,11 +132,11 @@ export const modules: Module[] = [
     description:
       'Quản lý toàn bộ thông tin 1.564 khách hàng. Hỗ trợ tìm kiếm nhanh theo tên/biệt danh, SĐT, mã KH. Quick action: Lập Chứng từ bán hàng hoặc Thu tiền trực tiếp từ danh sách.',
     screenDescription:
-      'Dashboard trên cùng: 3 metric cards (Nợ quá hạn | Tổng nợ phải thu | Đã thanh toán 30 ngày gần đây). Bảng danh sách: Mã KH, Tên KH, Địa chỉ, Công nợ, MST/CCCD, Điện thoại. Cột Chức năng: "Thu tiền" / "Lập Chứng từ bán hàng". Toolbar: Tìm kiếm, Lọc, Thêm.',
+      'Bảng danh sách: Mã KH, Tên KH, Địa chỉ, Công nợ, MST/CCCD, Điện thoại. Cột Chức năng: "Thu tiền" / "Lập Chứng từ bán hàng". Toolbar: Tìm kiếm, Lọc, Thêm.',
     formDescription:
       'Popup modal: Radio Tổ chức/Cá nhân, MST/CCCD, Mã KH (auto), Điện thoại, Tên KH (bắt buộc), Nhóm KH, Địa chỉ, NV bán hàng. Tabs: Thông tin liên hệ | Điều khoản thanh toán | TK ngân hàng | Địa chỉ khác | Ghi chú.',
     useCases: [
-      { id: 'UC01', name: 'Xem danh sách KH + dashboard', description: 'Hiển thị nợ quá hạn, tổng nợ, đã thanh toán' },
+      { id: 'UC01', name: 'Xem danh sách KH' },
       { id: 'UC02', name: 'Tìm kiếm fuzzy', description: 'Tìm theo tên/biệt danh/SĐT/mã' },
       { id: 'UC03', name: 'Thêm mới KH', description: 'Popup modal, auto generate mã' },
       { id: 'UC04', name: 'Sửa / Ẩn KH' },
@@ -173,13 +173,13 @@ export const modules: Module[] = [
     price: 12000000,
     icon: 'Package',
     description:
-      'Quản lý 3.734 sản phẩm phụ tùng máy nông nghiệp. 25 loại đơn vị tính. Dashboard cảnh báo tồn kho. Hỗ trợ 3 mức giá bán. Hỗ trợ tên phụ (alias) để tìm kiếm nhanh.',
+      'Quản lý 3.734 sản phẩm phụ tùng máy nông nghiệp. 25 loại đơn vị tính. Hỗ trợ 3 mức giá bán. Hỗ trợ tên phụ (alias) để tìm kiếm nhanh.',
     screenDescription:
-      'Dashboard: "Hàng hóa SẮP HẾT HÀNG" (icon cam) | "Hàng hóa HẾT HÀNG" (icon đỏ). Bảng: Tên, Mã, Tính chất, Số lượng tồn, Giá trị tồn. Toolbar: Lọc, Tìm kiếm, Thêm.',
+      'Bảng: Tên, Mã, Tính chất, Số lượng tồn, Giá trị tồn. Toolbar: Lọc, Tìm kiếm, Thêm.',
     formDescription:
       'Popup chọn tính chất (6 loại: Hàng hóa, Dịch vụ, NVL, Thành phẩm, CCDC, Combo). Form: Mã HH (auto), Tên HH (bắt buộc), Tên phụ (optional — alias/tên rút gọn để tìm kiếm), ĐVT chính, Nhóm HH, 3 mức giá bán, Tồn tối thiểu, Mã vạch.',
     useCases: [
-      { id: 'UC01', name: 'Xem danh sách + dashboard tồn kho' },
+      { id: 'UC01', name: 'Xem danh sách hàng hóa' },
       { id: 'UC02', name: 'Tìm kiếm hàng hóa', description: 'Search theo tên chính + tên phụ' },
       { id: 'UC03', name: 'Thêm mới hàng hóa' },
       { id: 'UC04', name: 'Sửa thông tin hàng hóa' },
@@ -330,9 +330,9 @@ export const modules: Module[] = [
     icon: 'Wallet',
     isCore: true,
     description:
-      'Dashboard tổng quan công nợ. Phân tích aging (tuổi nợ). Thu tiền nhanh. Đối trừ chứng từ.',
+      'Tổng quan công nợ. Phân tích aging (tuổi nợ). Thu tiền nhanh. Đối trừ chứng từ.',
     screenDescription:
-      'Dashboard 3 thẻ chỉ số: Nợ quá hạn | Tổng nợ phải thu | Đã thanh toán 30 ngày. Bảng khách hàng có nợ. Panel 2 tab: Phân tích nợ theo hóa đơn (3 bảng: trước hạn, quá hạn, tình trạng) | Chi tiết.',
+      'Bảng khách hàng có nợ. Panel 2 tab: Phân tích nợ theo hóa đơn (3 bảng: trước hạn, quá hạn, tình trạng) | Chi tiết.',
     logic: [
       'Công nợ cuối kỳ = Nợ đầu kỳ + Bán hàng - Thanh toán - Trả hàng ± Bù trừ',
       '(+) Bán hàng ghi nợ → TĂNG công nợ',
@@ -342,7 +342,7 @@ export const modules: Module[] = [
       'VD: Sơn 92: 82.158.000 + 18.888.900 - 0 - 0 = 101.046.900đ',
     ],
     useCases: [
-      { id: 'UC06-01', name: 'Xem dashboard 3 metrics + bảng KH có nợ' },
+      { id: 'UC06-01', name: 'Xem bảng KH có nợ' },
       { id: 'UC06-02', name: 'Xem phân tích aging', description: 'Click 1 KH → tab phân tích: 3 bảng trước hạn, quá hạn, tình trạng' },
       { id: 'UC06-03', name: 'Thu tiền nhanh', description: 'Nhấn "Thu tiền" → nhập số tiền, chọn tiền mặt hoặc chuyển khoản → Lưu → giảm nợ khách hàng' },
       { id: 'UC06-04', name: 'Đối trừ chứng từ', description: 'Khớp Chứng từ bán hàng với phiếu thu theo từng hóa đơn' },
