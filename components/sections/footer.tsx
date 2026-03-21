@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { User, Phone, MapPin, Calendar, Clock } from 'lucide-react'
+import { User, Phone, MapPin } from 'lucide-react'
 import { projectInfo } from '@/data/project-data'
 import { sectionIds } from '@/lib/utils'
 import { ScrollReveal } from '@/components/ui/scroll-reveal'
@@ -45,14 +45,6 @@ export function Footer() {
             <div className="flex items-center gap-3 text-gray-400">
               <User size={16} className="text-blue-400" />
               <span className="text-sm">{projectInfo.provider.contact}</span>
-            </div>
-            <div className="flex items-center gap-3 text-gray-400">
-              <Calendar size={16} className="text-blue-400" />
-              <span className="text-sm">Ngày báo giá: {projectInfo.provider.date}</span>
-            </div>
-            <div className="flex items-center gap-3 text-gray-400">
-              <Clock size={16} className="text-blue-400" />
-              <span className="text-sm">Hiệu lực: {projectInfo.provider.validity}</span>
             </div>
           </div>
         </ScrollReveal>

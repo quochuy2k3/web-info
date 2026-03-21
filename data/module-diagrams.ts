@@ -37,34 +37,25 @@ export const moduleDiagrams: Record<string, { title: string; chart: string }[]> 
   B --> C["Tự động tải\ncông nợ đầu kỳ"]
   C --> D["Thêm dòng hàng\ntìm hàng hóa, tự động điền giá"]
   D --> E{"Phương thức\nthanh toán?"}
-  E -->|"Chưa thu tiền\n ghi nợ"| F["Ghi nợ khách hàng\nPhải thu khách hàng"]
+  E -->|"Chưa thu tiền\n ghi nợ"| F["Ghi nợ khách hàng\nTăng công nợ"]
   E -->|"Thu tiền ngay"| G{"Hình thức\nthu tiền?"}
-  G -->|"Tiền mặt"| H["Thu tiền mặt"]
-  G -->|"Chuyển khoản"| I["Thu chuyển khoản"]
-  F --> J{"Kiêm phiếu\nxuất kho?"}
+  G -->|"Tiền mặt"| H["Thu tiền mặt\nSinh phiếu thu"]
+  G -->|"Chuyển khoản"| I["Thu chuyển khoản\nSinh phiếu thu"]
+  F --> J["Lưu chứng từ"]
   H --> J
   I --> J
-  J -->|"Có"| K["Tự động sinh\nPhiếu xuất kho\nGiảm tồn kho"]
-  J -->|"Không"| L["Lập phiếu xuất sau"]
-  K --> M{"Lập kèm\nhóa đơn?"}
-  L --> M
-  M -->|"Có"| N["Tự động sinh\nHóa đơn GTGT"]
-  M -->|"Không"| O["Lập hóa đơn sau"]
-  N --> P["Cập nhật trạng thái\n+ Công nợ cuối kỳ"]
-  O --> P`,
+  J --> K["Tự động trừ tồn kho\ntừng mặt hàng"]
+  K --> L["Cập nhật công nợ cuối kỳ\n+ Trạng thái thanh toán"]`,
     },
     {
       title: 'Bút toán Hạch toán — Bán hàng trong nước',
       chart: `flowchart LR
   subgraph rev ["Ghi nhận Doanh thu"]
-    A["Ghi Nợ:\nPhải thu khách hàng"] --> B["Ghi Có:\nDoanh thu bán hàng"]
-    A --> C["Ghi Có:\nThuế GTGT phải nộp"]
-  end
-  subgraph cogs ["Ghi nhận Giá vốn"]
-    D["Ghi Nợ:\nGiá vốn hàng bán"] --> E["Ghi Có:\nHàng hóa tồn kho"]
+    A["Nợ TK 131:\nPhải thu khách hàng"] --> B["Có TK 511:\nDoanh thu bán hàng"]
+    A --> C["Có TK 3331:\nThuế GTGT phải nộp"]
   end
   subgraph cash ["Thu tiền ngay - nếu có"]
-    F["Ghi Nợ:\nTiền mặt hoặc\nTiền gửi ngân hàng"] --> G["Ghi Có:\nGiảm công nợ\nkhách hàng"]
+    F["Nợ TK 111/112:\nTiền mặt hoặc\nTiền gửi ngân hàng"] --> G["Có TK 131:\nGiảm công nợ\nkhách hàng"]
   end`,
     },
     {
@@ -90,39 +81,26 @@ export const moduleDiagrams: Record<string, { title: string; chart: string }[]> 
 
   NV->>UI: Nhấn "Lưu"
   UI->>API: Tạo chứng từ bán hàng
-  API->>DB: Lưu chứng từ
-  API->>DB: Cập nhật công nợ khách hàng
-  API->>DB: Giảm tồn kho hàng hóa
+  API->>DB: Lưu chứng từ + cập nhật công nợ
+  API->>DB: Trừ tồn kho từng mặt hàng
   API-->>UI: Thành công
 
   NV->>UI: Nhấn "In phiếu"
   UI->>API: Tạo file PDF
-  API-->>UI: Phiếu xuất kho bán hàng`,
+  API-->>UI: Phiếu bán hàng`,
     },
     {
       title: 'Trạng thái Chứng từ Bán hàng',
       chart: `stateDiagram-v2
-  state "Trạng thái Hóa đơn" as hd {
-    [*] --> ChuaLapHD
-    ChuaLapHD --> DaLapHD : Phát hành hóa đơn
-    ChuaLapHD : Chưa lập hóa đơn
-    DaLapHD : Đã lập hóa đơn
-  }
-  state "Trạng thái Thanh toán" as tt {
-    [*] --> ChuaTT
-    ChuaTT --> DaTT1Phan : Thu một phần
-    DaTT1Phan --> DaTTDu : Thu đủ
-    ChuaTT --> DaTTDu : Thu đủ ngay
-    ChuaTT : Chưa thanh toán
-    DaTT1Phan : Đã thanh toán một phần
-    DaTTDu : Đã thanh toán đủ
-  }
-  state "Trạng thái Xuất hàng" as xh {
-    [*] --> ChuaXuat
-    ChuaXuat --> DaXuatDu : Xuất kho
-    ChuaXuat : Chưa xuất hàng
-    DaXuatDu : Đã xuất đủ hàng
-  }`,
+  [*] --> ChuaTT
+  ChuaTT --> DaTT1Phan : Thu một phần
+  DaTT1Phan --> DaTTDu : Thu đủ
+  ChuaTT --> DaTTDu : Thu đủ ngay
+  DaTTDu --> [*]
+
+  ChuaTT : Chưa thanh toán
+  DaTT1Phan : Đã thanh toán một phần
+  DaTTDu : Đã thanh toán đủ`,
     },
   ],
 
@@ -134,24 +112,19 @@ export const moduleDiagrams: Record<string, { title: string; chart: string }[]> 
   B --> C{"Phương thức\nxử lý?"}
   C -->|"Giảm trừ công nợ"| D["Giảm nợ khách hàng"]
   C -->|"Hoàn lại tiền mặt"| E["Hoàn tiền cho\nkhách hàng"]
-  D --> F{"Kiêm phiếu\nnhập kho?"}
+  D --> F["Lưu chứng từ trả hàng"]
   E --> F
-  F -->|"Có"| G["Tự động sinh\nPhiếu nhập kho\nTăng tồn kho"]
-  F -->|"Không"| H["Nhập kho\nthủ công sau"]
-  G --> I["Hoàn tất\nCập nhật trạng thái"]
-  H --> I`,
+  F --> G["Tự động tăng lại\ntồn kho từng mặt hàng"]
+  G --> H["Hoàn tất\nCập nhật trạng thái"]`,
     },
     {
       title: 'Bút toán Hạch toán — Trả lại hàng bán',
       chart: `flowchart LR
   subgraph dt ["Giảm Doanh thu"]
-    A["Ghi Nợ:\nHàng bán bị trả lại"] --> B["Ghi Có:\nGiảm phải thu\nkhách hàng"]
+    A["Nợ TK 5212:\nHàng bán bị trả lại"] --> B["Có TK 131:\nGiảm phải thu\nkhách hàng"]
   end
   subgraph vat ["Hoàn Thuế GTGT"]
-    C["Ghi Nợ:\nGiảm thuế\nGTGT phải nộp"] --> D["Ghi Có:\nGiảm phải thu\nkhách hàng"]
-  end
-  subgraph inv ["Hoàn Giá vốn"]
-    E["Ghi Nợ:\nTăng hàng\ntồn kho"] --> F["Ghi Có:\nGiảm giá vốn\nhàng bán"]
+    C["Nợ TK 3331:\nGiảm thuế\nGTGT phải nộp"] --> D["Có TK 131:\nGiảm phải thu\nkhách hàng"]
   end`,
     },
   ],

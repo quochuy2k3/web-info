@@ -15,22 +15,24 @@ export function Payment() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           label="Thanh toán"
-          title="Thanh toán 2 đợt"
+          title="Thanh toán 3 đợt"
           description="Thanh toán theo milestone — chỉ trả khi thấy kết quả."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {paymentTerms.map((term, idx) => (
-            <ScrollReveal key={term.phase} variant={idx === 0 ? 'fadeLeft' : 'fadeRight'} delay={idx * 0.2}>
+            <ScrollReveal key={term.phase} variant={idx === 0 ? 'fadeLeft' : idx === 2 ? 'fadeRight' : 'fadeUp'} delay={idx * 0.2}>
               <div className={`glow-card p-8 h-full ${idx === 0 ? 'glow-card-core' : ''}`}>
                 {/* Phase badge */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                     idx === 0
                       ? 'bg-gradient-to-br from-blue-500/20 to-orange-500/20 border border-blue-500/30'
-                      : 'bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30'
+                      : idx === 1
+                        ? 'bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30'
+                        : 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30'
                   }`}>
-                    <CreditCard size={22} className={idx === 0 ? 'text-blue-400' : 'text-emerald-400'} />
+                    <CreditCard size={22} className={idx === 0 ? 'text-blue-400' : idx === 1 ? 'text-emerald-400' : 'text-purple-400'} />
                   </div>
                   <div>
                     <div className="text-xs text-gray-500 uppercase tracking-wider">Đợt {term.phase}</div>
@@ -40,7 +42,7 @@ export function Payment() {
 
                 {/* Amount */}
                 <div className="mb-6">
-                  <div className={`text-3xl font-bold ${idx === 0 ? 'text-gradient' : 'text-emerald-400'}`}>
+                  <div className={`text-3xl font-bold ${idx === 0 ? 'text-gradient' : idx === 1 ? 'text-emerald-400' : 'text-purple-400'}`}>
                     <AnimatedCounter target={term.amount} format="currency" duration={2} />
                   </div>
                 </div>
@@ -55,7 +57,7 @@ export function Payment() {
                 <div>
                   <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">Deliverables</div>
                   <div className="flex items-start gap-2 text-sm text-gray-400">
-                    <CircleCheck size={14} className={`${idx === 0 ? 'text-blue-400' : 'text-emerald-400'} mt-0.5 shrink-0`} />
+                    <CircleCheck size={14} className={`${idx === 0 ? 'text-blue-400' : idx === 1 ? 'text-emerald-400' : 'text-purple-400'} mt-0.5 shrink-0`} />
                     <span>{term.deliverables}</span>
                   </div>
                 </div>

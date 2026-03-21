@@ -30,7 +30,7 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-medium">
             <Sparkles size={14} className="text-blue-400" />
-            Proposal — {projectInfo.provider.date}
+            Proposal
           </span>
         </motion.div>
 

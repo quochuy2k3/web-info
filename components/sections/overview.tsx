@@ -1,6 +1,6 @@
 'use client'
 
-import { Check, X, Target, Zap, BarChart3, Printer } from 'lucide-react'
+import { Check, X, Zap, BarChart3, Printer } from 'lucide-react'
 import { projectInfo } from '@/data/project-data'
 import { sectionIds } from '@/lib/utils'
 import { SectionHeader } from '@/components/ui/section-header'
@@ -31,14 +31,6 @@ const highlights = [
     bg: 'bg-emerald-500/10',
     border: 'border-emerald-500/20',
   },
-  {
-    icon: Target,
-    title: 'Đơn giản hóa',
-    description: 'Bỏ kế toán sổ cái, BCTC, thuế phức tạp',
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/10',
-    border: 'border-blue-500/20',
-  },
 ]
 
 export function Overview() {
@@ -48,11 +40,11 @@ export function Overview() {
         <SectionHeader
           label="Tổng quan"
           title="Mục tiêu dự án"
-          description="Xây dựng hệ thống web app quản lý bán hàng và công nợ riêng, tập trung phân hệ Bán hàng — đơn giản hóa so với MISA AMIS gốc."
+          description="Xây dựng hệ thống web app quản lý bán hàng và công nợ riêng, tập trung phân hệ Bán hàng."
         />
 
         {/* Highlight cards */}
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-20">
           {highlights.map((item) => (
             <StaggerItem key={item.title}>
               <div className="glow-card p-6 h-full">

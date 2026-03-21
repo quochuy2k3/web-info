@@ -246,8 +246,8 @@ export function ModuleDetail({ module }: { module: Module }) {
                     <thead>
                       <tr className="border-b border-white/10">
                         <th className="text-left py-2 text-gray-500 font-medium pr-4">Nghiệp vụ</th>
-                        <th className="text-left py-2 text-blue-400 font-medium pr-4">Tăng (+)</th>
-                        <th className="text-left py-2 text-cyan-400 font-medium pr-4">Giảm (−)</th>
+                        <th className="text-left py-2 text-blue-400 font-medium pr-4">Nợ (Debit)</th>
+                        <th className="text-left py-2 text-cyan-400 font-medium pr-4">Có (Credit)</th>
                         <th className="text-left py-2 text-gray-500 font-medium hidden sm:table-cell">Diễn giải</th>
                       </tr>
                     </thead>
